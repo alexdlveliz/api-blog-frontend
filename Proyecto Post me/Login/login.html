@@ -35,29 +35,34 @@
             <div class="form-container sign-up-container">
                 <form action="#">
                     <h1>Registrate</h1>
-                    <div class="social-container">
-                        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                    <span>Usa tu correo</span>
+                    <span>llena la siguiente informacion</span>
                     <input type="text" placeholder="Nombre" />
+                    <input type="email" placeholder="Correo" />
                     <input type="text" placeholder="Usuario" />
-                    <input type="password" placeholder="contraseña" />
+                    <div class="rol">
+                        <p>Rol</p>
+                        <label>
+                            <input type="radio" name="like">
+                            <span class="invitado">Invitado</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="like">
+                            <span class="escritor">Escritor</span>
+                        </label>
+                    </div>
+                    <input type="password" placeholder="Contraseña" />
                     <button>Registrate</button>
                 </form>
             </div>
             <div class="form-container sign-in-container">
                 <form action="#">
                     <h1>Iniciar Sesión</h1>
-                    <div class="social-container">
-                        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                    <div class="user-svg">
+                        <img src="img/user.svg" alt="">
                     </div>
                     <span>Ingresa con tu cuenta</span>
                     <input type="text" placeholder="Usuario" />
-                    <input type="password" placeholder="contraseña" />
+                    <input type="password" placeholder="Contraseña" />
                     <a href="#">¿Olvidaste tu contraseña?</a>
                     <button>Iniciar sesión</button>
                 </form>

@@ -28,7 +28,7 @@ nav > a:hover{
     text-decoration: underline;
 }
 .wave{
-    position: relative;
+	position: fixed;
     width: 100%;
 }
 /*-------CONTENEDOR GENERAL-------*/
@@ -37,7 +37,7 @@ nav > a:hover{
 	justify-content: center;
 	align-items: center;
 	flex-direction: row;
-	margin-bottom: 100px;
+	padding-top: 70px;
 }
 /*-------IMAGEN--------*/
 .imgbx{
@@ -108,12 +108,82 @@ form {
 	text-align: center;
 }
 input{
-	background-color: #eee;
-	border: none;
+	background-color:white;
+	border-radius: 15px;
+	border: 1px solid #CD9CFE;
 	padding: 12px 15px;
 	margin: 8px 0;
 	width: 100%;
 }
+.rol{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+	padding: 5px 5px;
+	margin: 8px 8px;
+	width: 100%;
+	background: #FFFFFF;
+	text-align: center;
+	border: 1px solid #CD9CFE;
+	border-radius: 15px;
+}
+.rol:before{
+	content: '';
+	transform: skew(-3deg);
+	pointer-events: none;
+}
+.rol p{
+	margin: 0;
+	padding: 0;
+	color: black;
+}
+.rol label{
+	position: relative;
+	cursor: pointer;
+}
+.rol label input{
+	display: none;
+}
+.rol label span{
+	position: relative;
+	display:  block;
+	margin: 5px;
+	padding: 5px;
+	width: 100px;
+	background: white;
+	border: 1px solid #CD9CFE;
+	color: #CD9CFE;
+	border-radius: 15px;
+}
+.rol label input:checked ~ span{
+	color: white;
+	background: #8811FE;
+	border: 1px solid #8811FE;
+}
+.rol label input:checked ~ span:before{
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: #8811FE;
+	z-index: -1;
+	filter: blur(15px);
+}
+.rol label input:checked ~ span:after{
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: #8811FE;
+	z-index: -1;
+	filter: blur(25px);
+}
+
 .container{
 	background-color: #fff;
 	border-radius: 10px;
@@ -138,9 +208,13 @@ input{
 	z-index: 2;
 	color: #8811FE;
 }
-.sign-in-container .social-container a i{
-	color: #8811FE;
+.sign-in-container img{
+	position: relative;
+	width: 55px;
+	height: 55px;
+	margin-top: 10px;
 }
+
 .container.right-panel-active .sign-in-container{
 	transform: translateX(100%);
 }
@@ -150,15 +224,12 @@ input{
 	width: 50%;
 	opacity: 0;
 	z-index: 1;
-	color: #FE1188;
+	color: #8811FE;
 }
 .sign-up-container .social-container a i{
-	color: #FE1188;
+	color: #8811FE;
 }
-.sign-up-container button{
-	border: 2px solid #FE1188;
-	background-color: #FE1188;
-}
+
 /*--------ESTILOS Y EFECTOS DE CONTENEDORES--------*/
 .container.right-panel-active .sign-up-container {
 	transform: translateX(100%);
@@ -191,7 +262,7 @@ input{
 	transform: translateX(-100%);
 }
 .overlay{
-	background: linear-gradient(to right,#FE1188,#8811FE);
+	background: linear-gradient(to right,#AF60FE,#8811FE,#8811FE, #AF60FE);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;
