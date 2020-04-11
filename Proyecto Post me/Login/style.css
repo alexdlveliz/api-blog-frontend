@@ -158,7 +158,7 @@ input{
 }
 .rol label input:checked ~ span{
 	color: white;
-	background: #8811FE;
+	background: #CD9CFE;
 	border: 1px solid #8811FE;
 }
 .rol label input:checked ~ span:before{
