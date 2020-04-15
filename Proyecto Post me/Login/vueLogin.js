@@ -11,18 +11,23 @@ const appRegistrar = new Vue({
   },
   methods: {
     registrarUsuario: function () {
+      /* Creación de los parámetros a enviar */
       var raw = `{\n	"email": "${this.correo}",\n	"name": "${
         this.nombre
       }",\n	"password": "${this.password}",\n	"username": "${
         this.usuario
       }",\n	"role": ${parseInt(this.rol)}\n}`;
-      var requestOptions = {
+      /* Llamada a la API */
+      fetch("https://software-app-blog.herokuapp.com/users", {
         method: "POST",
-        mode: "no-cors",
+        redirect: "follow",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
         body: raw,
-      };
-      fetch("https://software-app-blog.herokuapp.com/users", requestOptions)
-        .then((response) => console.log("Response", response))
+      })
+        .then((response) => console.log("Respuesta", response))
         .then((result) => console.log("Resultado:", result))
         .catch((error) => console.log("ha habido un error", error));
     },
