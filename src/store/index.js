@@ -1,16 +1,20 @@
-const appRegistrar = new Vue({
-  el: "#registrar",
-  data() {
-    return {
+import Vue from "vue";
+import Vuex from "vuex";
+
+Vue.use(Vuex);
+
+export default new Vuex.Store({
+  state: {
+    datosLogin: {
       nombre: "",
       correo: "",
       usuario: "",
-      rol: 0,
       password: "",
-    };
+      rol: 0,
+    },
   },
-  methods: {
-    registrarUsuario: function () {
+  mutations: {
+    registrarUsuario() {
       /* Creación de los parámetros a enviar */
       var raw = `{\n	"email": "${this.correo}",\n	"name": "${
         this.nombre
@@ -32,8 +36,6 @@ const appRegistrar = new Vue({
         .catch((error) => console.log("ha habido un error", error));
     },
   },
-});
-
-const appLogin = new Vue({
-  el: "#inicio-sesion",
+  actions: {},
+  modules: {},
 });
