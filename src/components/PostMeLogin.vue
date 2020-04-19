@@ -46,7 +46,11 @@
                 <span class="escritor">Escritor</span>
               </label>
             </div>
-            <input type="password" placeholder="Contraseña" v-model="data.password" />
+            <input
+              type="password"
+              placeholder="Contraseña"
+              v-model="data.password"
+            />
             <button @click="registrarUsuario">Regístrate</button>
           </div>
         </div>
@@ -73,7 +77,9 @@
             </div>
             <div class="overlay-panel overlay-right">
               <h1>Esto es post-me!</h1>
-              <p>Registrate y comienza a compartir y crear cosas junto a nosotros</p>
+              <p>
+                Registrate y comienza a compartir y crear cosas junto a nosotros
+              </p>
               <button class="ghost" id="signUp">Registrate</button>
             </div>
           </div>
@@ -114,12 +120,12 @@ export default {
   data() {
     return {
       data: {
-        nombre: "Erick Alexander de León Véliz",
-        usuario: "alexdlveliz",
-        correo: "alexdlveliz@hotmail.com",
-        password: "alex1234",
-        rol: 0
-      }
+        nombre: "",
+        usuario: "",
+        correo: "",
+        password: "",
+        rol: 0,
+      },
     };
   },
   computed: {},
@@ -138,15 +144,15 @@ export default {
           redirect: "follow",
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*"
+            "Access-Control-Allow-Origin": "*",
           },
-          body: raw
+          body: raw,
         })
-          .then(response => console.log("Respuesta", response))
-          .then(result => console.log("Resultado:", result))
-          .catch(error => console.log("ha habido un error", error));
-    }
-  }
+          .then((response) => console.log("Respuesta", response))
+          .then((result) => console.log("Resultado:", result))
+          .catch((error) => console.log("ha habido un error", error));
+    },
+  },
 };
 </script>
 
