@@ -32,21 +32,21 @@
           <div class="form">
             <h1>Regístrate</h1>
             <span>llena la siguiente información</span>
-            <input type="text" placeholder="Nombre" v-model="datosLogin.nombre" />
-            <input type="email" placeholder="Correo" v-model="datosLogin.correo" />
-            <input type="text" placeholder="Usuario" v-model="datosLogin.usuario" />
+            <input type="text" placeholder="Nombre" v-model="data.nombre" />
+            <input type="email" placeholder="Correo" v-model="data.correo" />
+            <input type="text" placeholder="Usuario" v-model="data.usuario" />
             <div class="rol">
               <p>Rol</p>
               <label>
-                <input type="radio" name="like" value="0" v-model="datosLogin.rol" />
+                <input type="radio" name="like" value="0" v-model="data.rol" />
                 <span class="invitado">Invitado</span>
               </label>
               <label>
-                <input type="radio" name="like" value="1" v-model="datosLogin.rol" />
+                <input type="radio" name="like" value="1" v-model="data.rol" />
                 <span class="escritor">Escritor</span>
               </label>
             </div>
-            <input type="password" placeholder="Contraseña" v-model="datosLogin.password" />
+            <input type="password" placeholder="Contraseña" v-model="data.password" />
             <button @click="registrarUsuario">Regístrate</button>
           </div>
         </div>
@@ -111,11 +111,41 @@ export default {
       container.classList.remove("right-panel-active");
     });
   },
-  computed: {
-    ...mapState(["datosLogin"])
+  data() {
+    return {
+      data: {
+        nombre: "Erick Alexander de León Véliz",
+        usuario: "alexdlveliz",
+        correo: "alexdlveliz@hotmail.com",
+        password: "alex1234",
+        rol: 0
+      }
+    };
   },
+  computed: {},
   methods: {
-    ...mapMutations(["registrarUsuario"])
+    registrarUsuario() {
+      /* Creación de los parámetros a enviar */
+      var raw = `{\n	"email": "${this.data.correo}",\n	"name": "${
+        this.data.nombre
+      }",\n	"password": "${this.data.password}",\n	"username": "${
+        this.data.usuario
+      }",\n	"role": ${parseInt(this.data.rol)}\n}`;
+      console.log(raw),
+        /* Llamada a la API */
+        fetch("https://software-app-blog.herokuapp.com/users", {
+          method: "POST",
+          redirect: "follow",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*"
+          },
+          body: raw
+        })
+          .then(response => console.log("Respuesta", response))
+          .then(result => console.log("Resultado:", result))
+          .catch(error => console.log("ha habido un error", error));
+    }
   }
 };
 </script>
