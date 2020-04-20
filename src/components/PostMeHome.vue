@@ -205,15 +205,6 @@
       <section class="bloguers">
         <div class="contenedor-bloguers">
           <div class="cards">
-            <!--<div class="card">
-                            <div class="imgBox">
-                                <img src="Imagenes/face1.jpg" alt="">
-                            </div>
-                            <div class="contenido-texto-card">
-                                <h4>Nombre</h4>
-                                <p>Lorem ipsum, debitis eligendi accusantium?</p>
-                            </div>
-            </div>-->
             <div class="square">
               <span></span>
               <span></span>
@@ -240,15 +231,6 @@
                 </a>
               </div>
             </div>
-            <!--<div class="card">
-                            <div class="imgBox">
-                                <img src="Imagenes/face2.jpg" alt="">
-                            </div>
-                            <div class="contenido-texto-card">
-                                <h4>Nombre</h4>
-                                <p>Lorem ipsum, debitis eligendi accusantium?</p>
-                            </div>
-            </div>-->
             <div class="square">
               <span></span>
               <span></span>

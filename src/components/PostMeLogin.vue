@@ -46,11 +46,7 @@
                 <span class="escritor">Escritor</span>
               </label>
             </div>
-            <input
-              type="password"
-              placeholder="Contraseña"
-              v-model="data.password"
-            />
+            <input type="password" placeholder="Contraseña" v-model="data.password" />
             <button @click="registrarUsuario">Regístrate</button>
           </div>
         </div>
@@ -62,10 +58,11 @@
               <img src="@/assets/Imagenes-login/user.svg" alt />
             </div>
             <span>Ingresa con tu cuenta</span>
-            <input type="text" placeholder="Usuario" />
-            <input type="password" placeholder="Contraseña" />
+            <!-- <input type="text" placeholder="Usuario" /> -->
+            <input type="text" placeholder="Email" v-model="login.email" />
+            <input type="password" placeholder="Contraseña" v-model="login.password" />
             <a href="#">¿Olvidaste tu contraseña?</a>
-            <button>Iniciar sesión</button>
+            <button @click="iniciarSesion">Iniciar sesión</button>
           </div>
         </div>
         <div class="overlay-container">
@@ -77,9 +74,7 @@
             </div>
             <div class="overlay-panel overlay-right">
               <h1>Esto es post-me!</h1>
-              <p>
-                Registrate y comienza a compartir y crear cosas junto a nosotros
-              </p>
+              <p>Registrate y comienza a compartir y crear cosas junto a nosotros</p>
               <button class="ghost" id="signUp">Registrate</button>
             </div>
           </div>
@@ -124,35 +119,67 @@ export default {
         usuario: "",
         correo: "",
         password: "",
-        rol: 0,
+        rol: 0
       },
+      login: {
+        email: "",
+        password: ""
+      }
     };
   },
   computed: {},
   methods: {
     registrarUsuario() {
-      /* Creación de los parámetros a enviar */
+      // Creación de los parámetros a enviar
       var raw = `{\n	"email": "${this.data.correo}",\n	"name": "${
         this.data.nombre
       }",\n	"password": "${this.data.password}",\n	"username": "${
         this.data.usuario
       }",\n	"role": ${parseInt(this.data.rol)}\n}`;
       console.log(raw),
-        /* Llamada a la API */
+        // Llamada a la API
         fetch("https://software-app-blog.herokuapp.com/users", {
           method: "POST",
           redirect: "follow",
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Origin": "*"
           },
-          body: raw,
+          body: raw
         })
-          .then((response) => console.log("Respuesta", response))
-          .then((result) => console.log("Resultado:", result))
-          .catch((error) => console.log("ha habido un error", error));
+          .then(response => console.log("Respuesta", response))
+          .then(result => console.log("Resultado:", result))
+          .catch(error => console.log("ha habido un error", error));
     },
-  },
+    async iniciarSesion() {
+      //Creación de los parámetros a enviar
+      var raw = `{\n	"email": "${this.login.email}",\n	"password": "${this.login.password}"\n}`;
+      var requestOptions = {
+        method: "POST",
+        body: raw,
+        redirect: "follow"
+      };
+
+      //Llamada a la API
+      await fetch(
+        `http://software-app-blog.herokuapp.com/auth/login?email=${this.login.email}&password=${this.login.password}`,
+        requestOptions
+      )
+        .then(response => response.text())
+        .then(result => {
+          //manejo de datos correctos o incorrectos
+          let data = JSON.parse(result);
+          if (data.token == null) {
+            alert("Correo o contraseña incorrectos");
+          } else {
+            //el token se guarda en el almacenamiento local del buscador
+            localStorage.setItem("token", JSON.stringify(data.token));
+            //PENDIENTE REDIRECCIÓN A PÁGINA DE PUBLICACIONES
+          }
+        })
+        .catch(error => console.log("error:", error));
+    }
+  }
 };
 </script>
 
