@@ -107,7 +107,7 @@
                   conocer mas acerca de temas relacionados a las comida,
                   recetas, health life style etc y mucho mas
                 </p>
-                <a href="#">Ver más</a>
+                <router-link to="/food">Ver más</router-link>
               </div>
             </div>
             <div class="imagen-port">
