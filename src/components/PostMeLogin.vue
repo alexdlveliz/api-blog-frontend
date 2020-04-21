@@ -173,6 +173,7 @@ export default {
             alert("Correo o contraseña incorrectos");
           } else {
             //el token se guarda en el almacenamiento local del buscador
+            localStorage.setItem("id", data.id);
             localStorage.setItem("token", data.token);
             localStorage.setItem("username", data.username);
             this.$router.push("/general");
