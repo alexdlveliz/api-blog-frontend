@@ -58,7 +58,7 @@
                   <img src="@/assets/Imagenes-comida/face2.jpg" alt />
                 </div>
                 <div class="contenido-texto-card">
-                  <h4>{{posts[0].user.name}}</h4>
+                  <h4>{{item.user.name}}</h4>
                 </div>
               </div>
               <div class="comentarios">
@@ -71,6 +71,14 @@
         </div>
       </div>
     </div>
+    <button
+        :disabled="pagination.prev_page!=null ? false:true"
+        @click="getPosts(pagination.prev_page)"
+      >Anterior</button>
+      <button
+        :disabled="pagination.next_page!=null ? false:true"
+        @click="getPosts(pagination.next_page)"
+      >Siguiente</button>
     <section class="portafolio">
       <div style="height: 150px; overflow: hidden;">
         <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
@@ -92,11 +100,24 @@ export default {
   name: "PostMeGeneral",
   data() {
     return {
+      pagination: [],
       posts: []
     };
   },
+  methods: {
+    ver() {
+      console.log(this.json);
+    },
+    async getPosts(url) {
+      const datos = await fetch(
+        `https://software-app-blog.herokuapp.com/${url}`
+      ).then(res => res.json());
+      this.posts = datos["posts"];
+      this.pagination = datos["meta"];
+    }
+  },
   created() {
-    api.getPosts().then(posts => (this.posts = posts));
+    this.getPosts("posts");
   }
 };
 </script>
