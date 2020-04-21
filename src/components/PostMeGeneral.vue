@@ -21,195 +21,51 @@
         </svg>
       </div>
     </header>
-    <div class="container">
-      <div class="otro">
-        <h1></h1>
-      </div>
-      <div class="content">
-        <div class="bannerText">
-          <div>
-            <h2>{{posts[0].title}}</h2>
-            <p>{{posts[0].content}}</p>
-            <a href="#">Comentarios</a>
+    <div v-for="(item, index) of posts" v-bind:key="index">
+      <div :class="[index%2==0 ? 'container':'container2']">
+        <div class="otro">
+          <h1></h1>
+        </div>
+        <div class="content" v-if="index%2==0">
+          <div class="bannerText">
+            <div>
+              <h2>{{item.title}}</h2>
+              <p>{{item.content}}</p>
+              <a href="#">Comentarios</a>
+            </div>
+          </div>
+          <div class="bannerImg" id="slideshow">
+            <img class="active" src="@/assets/Imagenes-comida/food6.jpg" alt />
           </div>
         </div>
-        <div class="bannerImg" id="slideshow">
-          <img class="active" src="@/assets/Imagenes-comida/food6.jpg" alt />
-          <img src="@/assets/Imagenes-comida/food2.jpg" alt />
-          <img src="@/assets/Imagenes-comida/food3.jpg" alt />
-          <img src="@/assets/Imagenes-comida/food4.jpg" alt />
-          <img src="@/assets/Imagenes-comida/food5.jpg" alt />
-        </div>
-      </div>
-      <div class="bloguer">
-        <div class="contenedor-bloguer">
-          <div class="cards">
-            <div class="card">
-              <div class="imgBox">
-                <img src="@/assets/Imagenes-comida/face2.jpg" alt />
-              </div>
-              <div class="contenido-texto-card">
-                <h4>{{posts[0].user.name}}</h4>
-              </div>
-            </div>
-            <div class="comentarios">
-              <h1>Haz un comentario</h1>
-              <input type="text" />
-              <a href="#">Enviar</a>
+        <div class="content" v-else>
+          <div class="bannerImg" id="slideshow">
+            <img class="active" src="@/assets/Imagenes-comida/food6.jpg" alt />
+          </div>
+          <div class="bannerText">
+            <div>
+              <h2>{{item.title}}</h2>
+              <p>{{item.content}}</p>
+              <a href="#">Comentarios</a>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="container2">
-      <div class="otro">
-        <h1></h1>
-      </div>
-      <div class="content">
-        <div class="bannerImg">
-          <img src="@/assets/Imagenes-comida/food1.jpg" alt />
-        </div>
-        <div class="bannerText">
-          <div>
-            <h2>{{posts[1].title}}</h2>
-            <p>{{posts[1].content}}</p>
-            <a href="#">Comentarios</a>
-          </div>
-        </div>
-      </div>
-      <div class="bloguer">
-        <div class="contenedor-bloguer">
-          <div class="cards">
-            <div class="vacio2"></div>
-            <div class="comentarios">
-              <h1>Haz un comentario</h1>
-              <input type="text" />
-              <a href="#">Enviar</a>
-            </div>
-            <div class="card">
-              <div class="imgBox">
-                <img src="@/assets/Imagenes-comida/face1.jpg" alt />
+        <div class="bloguer">
+          <div class="contenedor-bloguer">
+            <div class="cards">
+              <div class="card">
+                <div class="imgBox">
+                  <img src="@/assets/Imagenes-comida/face2.jpg" alt />
+                </div>
+                <div class="contenido-texto-card">
+                  <h4>{{posts[0].user.name}}</h4>
+                </div>
               </div>
-              <div class="contenido-texto-card">
-                <h4>{{posts[1].user.name}}</h4>
+              <div class="comentarios">
+                <h1>Haz un comentario</h1>
+                <input type="text" />
+                <a href="#">Enviar</a>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="otro">
-        <h1></h1>
-      </div>
-      <div class="content">
-        <div class="bannerText">
-          <div>
-            <h2>{{posts[2].title}}</h2>
-            <p>{{posts[2].content}}</p>
-            <a href="#">Comentarios</a>
-          </div>
-        </div>
-        <div class="bannerImg" id="slideshow">
-          <img class="active" src="@/assets/Imagenes-comida/food6.jpg" alt />
-          <img src="@/assets/Imagenes-comida/food2.jpg" alt />
-          <img src="@/assets/Imagenes-comida/food3.jpg" alt />
-          <img src="@/assets/Imagenes-comida/food4.jpg" alt />
-          <img src="@/assets/Imagenes-comida/food5.jpg" alt />
-        </div>
-      </div>
-      <div class="bloguer">
-        <div class="contenedor-bloguer">
-          <div class="cards">
-            <div class="card">
-              <div class="imgBox">
-                <img src="@/assets/Imagenes-comida/face2.jpg" alt />
-              </div>
-              <div class="contenido-texto-card">
-                <h4>{{posts[2].user.name}}</h4>
-              </div>
-            </div>
-            <div class="comentarios">
-              <h1>Haz un comentario</h1>
-              <input type="text" />
-              <a href="#">Enviar</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container2">
-      <div class="otro">
-        <h1></h1>
-      </div>
-      <div class="content">
-        <div class="bannerImg">
-          <img src="@/assets/Imagenes-comida/food1.jpg" alt />
-        </div>
-        <div class="bannerText">
-          <div>
-            <h2>{{posts[3].title}}</h2>
-            <p>{{posts[3].content}}</p>
-            <a href="#">Comentarios</a>
-          </div>
-        </div>
-      </div>
-      <div class="bloguer">
-        <div class="contenedor-bloguer">
-          <div class="cards">
-            <div class="vacio2"></div>
-            <div class="comentarios">
-              <h1>Haz un comentario</h1>
-              <input type="text" />
-              <a href="#">Enviar</a>
-            </div>
-            <div class="card">
-              <div class="imgBox">
-                <img src="@/assets/Imagenes-comida/face1.jpg" alt />
-              </div>
-              <div class="contenido-texto-card">
-                <h4>{{posts[3].user.name}}</h4>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="otro">
-        <h1></h1>
-      </div>
-      <div class="content">
-        <div class="bannerText">
-          <div>
-            <h2>{{posts[4].title}}</h2>
-            <p>{{posts[4].content}}</p>
-            <a href="#">Comentarios</a>
-          </div>
-        </div>
-        <div class="bannerImg" id="slideshow">
-          <img class="active" src="@/assets/Imagenes-comida/food6.jpg" alt />
-          <img src="@/assets/Imagenes-comida/food2.jpg" alt />
-          <img src="@/assets/Imagenes-comida/food3.jpg" alt />
-          <img src="@/assets/Imagenes-comida/food4.jpg" alt />
-          <img src="@/assets/Imagenes-comida/food5.jpg" alt />
-        </div>
-      </div>
-      <div class="bloguer">
-        <div class="contenedor-bloguer">
-          <div class="cards">
-            <div class="card">
-              <div class="imgBox">
-                <img src="@/assets/Imagenes-comida/face2.jpg" alt />
-              </div>
-              <div class="contenido-texto-card">
-                <h4>{{posts[4].user.name}}</h4>
-              </div>
-            </div>
-            <div class="comentarios">
-              <h1>Haz un comentario</h1>
-              <input type="text" />
-              <a href="#">Enviar</a>
             </div>
           </div>
         </div>
