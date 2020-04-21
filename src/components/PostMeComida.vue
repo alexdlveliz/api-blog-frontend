@@ -5,6 +5,8 @@
         <router-link to="/">Inicio</router-link>
         <router-link to="/about">Nosotros</router-link>
         <router-link to="/login">Iniciar Sesión</router-link>
+        <router-link to="/general">Posts</router-link>
+        <router-link to="/create">Publicar</router-link>
       </nav>
       <section class="textos-header">
         <h1>Comida</h1>
@@ -238,12 +240,12 @@ export default {
     };
   },
   created() {
-    api.getPosts().then(posts => (this.posts = posts));
+    api.getPostsComida(1).then(posts => (this.posts = posts));
   }
 };
 </script>
 
-<style scoped>
+<style>
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap");
 * {
   margin: 0;

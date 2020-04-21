@@ -32,6 +32,11 @@ const routes = [
     name: "Comida",
     component: () => import("../views/Comida.vue"),
   },
+  {
+    path: "/create",
+    name: "Comida",
+    component: () => import("../views/Create.vue"),
+  },
 ];
 
 const router = new VueRouter({
