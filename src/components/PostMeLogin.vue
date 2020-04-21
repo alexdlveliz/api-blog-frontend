@@ -174,7 +174,7 @@ export default {
           } else {
             //el token se guarda en el almacenamiento local del buscador
             localStorage.setItem("token", JSON.stringify(data.token));
-            //PENDIENTE REDIRECCIÓN A PÁGINA DE PUBLICACIONES
+            this.$router.push("/general");
           }
         })
         .catch(error => console.log("error:", error));

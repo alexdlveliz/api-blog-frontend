@@ -7,30 +7,28 @@
       <p>Categoría: {{ post.category.name }}</p>
       <p>Creado por: {{ post.user.name }}</p>
     </h2>
-    
   </div>
 </template>
 
 <script>
 //Importo el archivo para realizar la comunicación con la api
-import api from '@/api'
+import api from "@/api";
 
 export default {
-  name: 'About',
+  name: "About",
 
-  data(){
+  data() {
     return {
       //Array para guardar los posts devueltos por la api
       posts: []
-    }
+    };
   },
 
   //Cuando se cree este componente se ejecutará el método 'getPosts'
-  created(){
+  created() {
     //Se llama al método getPosts creado en el archivo src/api.js
-    api.getPosts()
-      .then(posts => (this.posts = posts))
+    api.getPosts().then(posts => (this.posts = posts));
+    console.log(this.posts);
   }
-  
-}
+};
 </script>

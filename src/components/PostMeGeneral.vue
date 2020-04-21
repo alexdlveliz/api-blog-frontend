@@ -1,5 +1,5 @@
 <template>
-  <div id="comida">
+  <div id="general">
     <header>
       <nav>
         <router-link to="/">Inicio</router-link>
@@ -7,8 +7,8 @@
         <router-link to="/login">Iniciar Sesión</router-link>
       </nav>
       <section class="textos-header">
-        <h1>Comida</h1>
-        <h2>"Conviertete en un experto culinario".</h2>
+        <h1>Posts</h1>
+        <h2>"Disfruta".</h2>
       </section>
       <div class="wave" style="height: 150px; overflow: hidden;">
         <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
@@ -231,7 +231,7 @@
 import api from "@/api";
 
 export default {
-  name: "PostMeComida",
+  name: "PostMeGeneral",
   data() {
     return {
       posts: []
@@ -243,7 +243,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap");
 * {
   margin: 0;
@@ -252,17 +252,17 @@ export default {
   font-family: "Poppins", sans-serif;
 }
 :root {
-  --color-categoria: #f5f003;
+  --color-categoria: #03b0f5;
   --gradiente: linear-gradient(
       to right,
-      hsla(59, 100%, 50%, 0.38),
-      hsla(59, 100%, 50%, 0.95)
+      hsla(189, 100%, 50%, 0.38),
+      hsla(189, 100%, 50%, 0.38)
     ),
     url(../assets/Imagenes-comida/fondo.jpg);
   --webkit-gradient: -webkit-linear-gradient(
       to right,
-      hsla(59, 100%, 50%, 0.38),
-      hsla(59, 100%, 50%, 0.95)
+      hsla(189, 100%, 50%, 0.38),
+      hsla(189, 100%, 50%, 0.38)
     ),
     url(../assets/Imagenes-comida/fondo.jpg);
 }
