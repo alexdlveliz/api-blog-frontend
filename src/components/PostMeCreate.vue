@@ -28,6 +28,13 @@
           <br />¡Deja volar tu imaginación!
         </h3>
         <input type="text" class="contenido-post" />
+        <select name="categorias">
+          <option value="1">Jardinería</option>
+          <option value="2">Belleza</option>
+          <option value="3">comida</option>
+          <option value="4">Ejercicio</option>
+          <option value="5">Espectáculos</option>
+        </select>
         <!-- nombre del cuate -->
         <a href id="Guardar">Guardar</a>
       </div>
