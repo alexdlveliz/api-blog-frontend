@@ -7,11 +7,6 @@
         <router-link to="/login">Iniciar Sesión</router-link>
         <router-link to="/general">Posts</router-link>
         <router-link to="/create">Publicar</router-link>
-        <!-- <a href="#">Inicio</a>
-        <a href="#">Nosotros</a>
-        <a href="#">Menu</a>
-        <a href="#">Iniciar sesion</a>
-        <a href="#">Registrate</a>-->
       </nav>
       <section class="textos-header">
         <h1>Post-me</h1>
@@ -67,134 +62,9 @@
             />
           </svg>
         </div>
-        <h2 class="titulob">Categorias</h2>
-        <div class="contenedor-categorias">
-          <div class="galeria-port">
-            <div class="imagen-port">
-              <div class="imgbx" data-text="Jardinería">
-                <img src="@/assets/Imagenes-home/plantas.svg" alt />
-              </div>
-              <div class="hover-galeria">
-                <h3>Jardinería</h3>
-                <p>
-                  En esta categoría podras encontrar blogs que te ayuden a
-                  conocer mas acerca de temas relacionados a las planatas y
-                  mucho mas
-                </p>
-                <a href="#">Ver más</a>
-              </div>
-            </div>
-            <div class="imagen-port">
-              <div class="imgbx" data-text="Belleza">
-                <img src="@/assets/Imagenes-home/belleza.svg" alt />
-              </div>
-              <div class="hover-galeria">
-                <h3>Belleza</h3>
-                <p>
-                  En esta categoría podras encontrar blogs que te ayuden a
-                  conocer mas acerca de temas relacionados a las belleza,
-                  cosmeticos y mucho más
-                </p>
-                <a href="#">Ver más</a>
-              </div>
-            </div>
-            <div class="imagen-port">
-              <div class="imgbx" data-text="Comida">
-                <img src="@/assets/Imagenes-home/comida.svg" alt />
-              </div>
-              <div class="hover-galeria">
-                <h3>Comida</h3>
-                <p>
-                  En esta categoría podras encontrar blogs que te ayuden a
-                  conocer mas acerca de temas relacionados a las comida,
-                  recetas, health life style etc y mucho mas
-                </p>
-                <router-link to="/food">Ver más</router-link>
-              </div>
-            </div>
-            <div class="imagen-port">
-              <div class="imgbx" data-text="Ejercicio">
-                <img src="@/assets/Imagenes-home/ejercicio.svg" alt />
-              </div>
-              <div class="hover-galeria">
-                <h3>Ejercicio</h3>
-                <p>
-                  En esta categoría podras encontrar blogs que te ayuden a
-                  conocer mas acerca de temas relacionados con el ejercicio,
-                  meditación y mucho mas
-                </p>
-                <a href="#">Ver más</a>
-              </div>
-            </div>
-            <div class="imagen-port">
-              <div class="imgbx" data-text="Espectáculos">
-                <img src="@/assets/Imagenes-home/espectaculo.svg" alt />
-              </div>
-              <div class="hover-galeria">
-                <h3>Espectáculos</h3>
-                <p>
-                  En esta categoría podras encontrar blogs que te ayuden a
-                  conocer mas acerca de temas relacionados a los espectáculos y
-                  mucho mas
-                </p>
-                <a href="#">Ver más</a>
-              </div>
-            </div>
-            <div class="imagen-port">
-              <div class="imgbx" data-text="Tecnología">
-                <img src="@/assets/Imagenes-home/tecnologia.svg" alt />
-              </div>
-              <div class="hover-galeria">
-                <h3>Tecnología</h3>
-                <p>
-                  En esta categoría podras encontrar blogs que te ayuden a
-                  conocer mas hacerca de temas relacionados a las tecnología,
-                  programación, informática y mucho mas
-                </p>
-                <a href="#">Ver más</a>
-              </div>
-            </div>
-            <div class="imagen-port">
-              <div class="imgbx" data-text="Manualidades">
-                <img src="@/assets/Imagenes-home/manualidades.svg" alt />
-              </div>
-              <div class="hover-galeria">
-                <h3>Manualides</h3>
-                <p>
-                  En esta categoría podras encontrar blogs que te ayuden a crear
-                  haciendo uso de tu imaginación, manualidades, Diy y mucho mas
-                </p>
-                <a href="#">Ver más</a>
-              </div>
-            </div>
-            <div class="imagen-port">
-              <div class="imgbx" data-text="Libros">
-                <img src="@/assets/Imagenes-home/libro.svg" alt />
-              </div>
-              <div class="hover-galeria">
-                <h3>Libros</h3>
-                <p>
-                  En esta categoría podras encontrar blogs que te ayuden a
-                  conocer mas acerca de poesia, libros y mucho mas
-                </p>
-                <a href="#">Ver más</a>
-              </div>
-            </div>
-            <div class="imagen-port">
-              <div class="imgbx" data-text="Mascotas">
-                <img src="@/assets/Imagenes-home/mascotas.svg" alt />
-              </div>
-              <div class="hover-galeria">
-                <h3>Libros</h3>
-                <p>
-                  En esta categoría podras encontrar blogs que te ayuden a
-                  conocer mas acerca de los animales y mucho mas
-                </p>
-                <a href="#">Ver más</a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <router-link to="/category">
+          <h2 class="titulob">Categorias</h2>
+        </router-link>
         <div style="height: 150px; overflow: hidden;">
           <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
             <path

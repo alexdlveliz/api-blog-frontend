@@ -11,6 +11,9 @@
       <section class="textos-header">
         <h1>Posts</h1>
         <h2>"Disfruta".</h2>
+        <router-link to="/category">
+          <h2>Ver por categorias</h2>
+        </router-link>
       </section>
       <div class="wave" style="height: 150px; overflow: hidden;">
         <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">

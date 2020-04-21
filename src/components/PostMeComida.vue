@@ -9,8 +9,20 @@
         <router-link to="/create">Publicar</router-link>
       </nav>
       <section class="textos-header">
-        <h1>Comida</h1>
-        <h2>"Conviertete en un experto culinario".</h2>
+        <h1>Categorias</h1>
+        <div class="contenedor-categorias">
+          <div class="galeria-port">
+            <div class="imagen-port" v-for="(item, index) of categories" v-bind:key="index">
+              <div class="imgbx">
+                <img src="@/assets/Imagenes-home/plantas.svg" alt />
+              </div>
+              <div class="hover-galeria">
+                <h3>{{item.name_category}}</h3>
+                <a @click="getPostsCategory('posts/category?page=1&id='+(index+1)+'')">Ver más</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
       <div class="wave" style="height: 150px; overflow: hidden;">
         <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
@@ -21,195 +33,51 @@
         </svg>
       </div>
     </header>
-    <div class="container">
-      <div class="otro">
-        <h1></h1>
-      </div>
-      <div class="content">
-        <div class="bannerText">
-          <div>
-            <h2>{{posts[0].title}}</h2>
-            <p>{{posts[0].content}}</p>
-            <a href="#">Comentarios</a>
+    <div v-for="(item, index) of posts" v-bind:key="index">
+      <div :class="[index%2==0 ? 'container':'container2']">
+        <div class="otro">
+          <h1></h1>
+        </div>
+        <div class="content" v-if="index%2==0">
+          <div class="bannerText">
+            <div>
+              <h2>{{item.title}}</h2>
+              <p>{{item.content}}</p>
+              <a href="#">Comentarios</a>
+            </div>
+          </div>
+          <div class="bannerImg" id="slideshow">
+            <img class="active" src="@/assets/Imagenes-comida/food6.jpg" alt />
           </div>
         </div>
-        <div class="bannerImg" id="slideshow">
-          <img class="active" src="@/assets/Imagenes-comida/food6.jpg" alt />
-          <img src="@/assets/Imagenes-comida/food2.jpg" alt />
-          <img src="@/assets/Imagenes-comida/food3.jpg" alt />
-          <img src="@/assets/Imagenes-comida/food4.jpg" alt />
-          <img src="@/assets/Imagenes-comida/food5.jpg" alt />
-        </div>
-      </div>
-      <div class="bloguer">
-        <div class="contenedor-bloguer">
-          <div class="cards">
-            <div class="card">
-              <div class="imgBox">
-                <img src="@/assets/Imagenes-comida/face2.jpg" alt />
-              </div>
-              <div class="contenido-texto-card">
-                <h4>{{posts[0].user.name}}</h4>
-              </div>
-            </div>
-            <div class="comentarios">
-              <h1>Haz un comentario</h1>
-              <input type="text" />
-              <a href="#">Enviar</a>
+        <div class="content" v-else>
+          <div class="bannerImg" id="slideshow">
+            <img class="active" src="@/assets/Imagenes-comida/food6.jpg" alt />
+          </div>
+          <div class="bannerText">
+            <div>
+              <h2>{{item.title}}</h2>
+              <p>{{item.content}}</p>
+              <a href="#">Comentarios</a>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="container2">
-      <div class="otro">
-        <h1></h1>
-      </div>
-      <div class="content">
-        <div class="bannerImg">
-          <img src="@/assets/Imagenes-comida/food1.jpg" alt />
-        </div>
-        <div class="bannerText">
-          <div>
-            <h2>{{posts[1].title}}</h2>
-            <p>{{posts[1].content}}</p>
-            <a href="#">Comentarios</a>
-          </div>
-        </div>
-      </div>
-      <div class="bloguer">
-        <div class="contenedor-bloguer">
-          <div class="cards">
-            <div class="vacio2"></div>
-            <div class="comentarios">
-              <h1>Haz un comentario</h1>
-              <input type="text" />
-              <a href="#">Enviar</a>
-            </div>
-            <div class="card">
-              <div class="imgBox">
-                <img src="@/assets/Imagenes-comida/face1.jpg" alt />
+        <div class="bloguer">
+          <div class="contenedor-bloguer">
+            <div class="cards">
+              <div class="card">
+                <div class="imgBox">
+                  <img src="@/assets/Imagenes-comida/face2.jpg" alt />
+                </div>
+                <div class="contenido-texto-card">
+                  <h4>{{item.user.name}}</h4>
+                </div>
               </div>
-              <div class="contenido-texto-card">
-                <h4>{{posts[1].user.name}}</h4>
+              <div class="comentarios">
+                <h1>Haz un comentario</h1>
+                <input type="text" />
+                <a href="#">Enviar</a>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="otro">
-        <h1></h1>
-      </div>
-      <div class="content">
-        <div class="bannerText">
-          <div>
-            <h2>{{posts[2].title}}</h2>
-            <p>{{posts[2].content}}</p>
-            <a href="#">Comentarios</a>
-          </div>
-        </div>
-        <div class="bannerImg" id="slideshow">
-          <img class="active" src="@/assets/Imagenes-comida/food6.jpg" alt />
-          <img src="@/assets/Imagenes-comida/food2.jpg" alt />
-          <img src="@/assets/Imagenes-comida/food3.jpg" alt />
-          <img src="@/assets/Imagenes-comida/food4.jpg" alt />
-          <img src="@/assets/Imagenes-comida/food5.jpg" alt />
-        </div>
-      </div>
-      <div class="bloguer">
-        <div class="contenedor-bloguer">
-          <div class="cards">
-            <div class="card">
-              <div class="imgBox">
-                <img src="@/assets/Imagenes-comida/face2.jpg" alt />
-              </div>
-              <div class="contenido-texto-card">
-                <h4>{{posts[2].user.name}}</h4>
-              </div>
-            </div>
-            <div class="comentarios">
-              <h1>Haz un comentario</h1>
-              <input type="text" />
-              <a href="#">Enviar</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container2">
-      <div class="otro">
-        <h1></h1>
-      </div>
-      <div class="content">
-        <div class="bannerImg">
-          <img src="@/assets/Imagenes-comida/food1.jpg" alt />
-        </div>
-        <div class="bannerText">
-          <div>
-            <h2>{{posts[3].title}}</h2>
-            <p>{{posts[3].content}}</p>
-            <a href="#">Comentarios</a>
-          </div>
-        </div>
-      </div>
-      <div class="bloguer">
-        <div class="contenedor-bloguer">
-          <div class="cards">
-            <div class="vacio2"></div>
-            <div class="comentarios">
-              <h1>Haz un comentario</h1>
-              <input type="text" />
-              <a href="#">Enviar</a>
-            </div>
-            <div class="card">
-              <div class="imgBox">
-                <img src="@/assets/Imagenes-comida/face1.jpg" alt />
-              </div>
-              <div class="contenido-texto-card">
-                <h4>{{posts[3].user.name}}</h4>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="otro">
-        <h1></h1>
-      </div>
-      <div class="content">
-        <div class="bannerText">
-          <div>
-            <h2>{{posts[4].title}}</h2>
-            <p>{{posts[4].content}}</p>
-            <a href="#">Comentarios</a>
-          </div>
-        </div>
-        <div class="bannerImg" id="slideshow">
-          <img class="active" src="@/assets/Imagenes-comida/food6.jpg" alt />
-          <img src="@/assets/Imagenes-comida/food2.jpg" alt />
-          <img src="@/assets/Imagenes-comida/food3.jpg" alt />
-          <img src="@/assets/Imagenes-comida/food4.jpg" alt />
-          <img src="@/assets/Imagenes-comida/food5.jpg" alt />
-        </div>
-      </div>
-      <div class="bloguer">
-        <div class="contenedor-bloguer">
-          <div class="cards">
-            <div class="card">
-              <div class="imgBox">
-                <img src="@/assets/Imagenes-comida/face2.jpg" alt />
-              </div>
-              <div class="contenido-texto-card">
-                <h4>{{posts[4].user.name}}</h4>
-              </div>
-            </div>
-            <div class="comentarios">
-              <h1>Haz un comentario</h1>
-              <input type="text" />
-              <a href="#">Enviar</a>
             </div>
           </div>
         </div>
@@ -236,11 +104,31 @@ export default {
   name: "PostMeComida",
   data() {
     return {
-      posts: []
+      posts: [],
+      categories: [],
+      categoryId: -1,
+      pagination: []
     };
   },
+  methods: {
+    async getCategories() {
+      const datos = await fetch(
+        `https://software-app-blog.herokuapp.com/categories`
+      ).then(res => res.json());
+      this.categories = datos["categories"];
+    },
+    async getPostsCategory(url) {
+      const datos = await fetch(
+        `https://software-app-blog.herokuapp.com/${url}`
+      ).then(res => res.json());
+      this.posts = datos["posts"];
+      this.pagination = datos["meta"];
+      console.log(url);
+    },
+  },
   created() {
-    api.getPostsComida(1).then(posts => (this.posts = posts));
+    //api.getPostsComida(1).then(posts => (this.posts = posts));
+    this.getCategories();
   }
 };
 </script>
@@ -318,7 +206,7 @@ header .textos-header {
 }
 .textos-header h1 {
   color: floralwhite;
-  font-size: 85px;
+  font-size: 50px;
   font-family: "Rock Salt", cursive;
 }
 .textos-header h2 {
@@ -637,5 +525,107 @@ header .textos-header {
   color: white;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   font-size: 20px;
+}
+/*---------------Galeria-Categorías---------------*/
+.contenedor-categorias {
+  margin: 0;
+  padding: 0;
+}
+.titulob {
+  color: #ffffff;
+  font-size: 45px;
+  font-family: "Rock Salt", cursive;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+}
+.contenedor-categorias .galeria-port {
+  margin-top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 10vh;
+}
+.galeria-port .imagen-port {
+  position: relative;
+  width: 280px;
+  height: 210px;
+  background: #ffffff;
+  display: block;
+  margin: 15px 32px;
+  border-radius: 45px;
+}
+.galeria-port .imagen-port .imgbx {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 45px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: 0.5s ease-in-out;
+}
+.galeria-port .imagen-port:hover .imgbx {
+  width: 125px;
+  height: 125px;
+  left: -60px;
+  top: calc(50% - 60px);
+  transition: 0.5s ease-in-out;
+  background: #894bf8;
+}
+.galeria-port .imagen-port .imgbx:before {
+  content: attr(data-text);
+  position: absolute;
+  text-align: center;
+  font-size: 2em;
+  color: rgba(137, 75, 248);
+  font-weight: 500;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+}
+.galeria-port .imagen-port .imgbx img {
+  max-width: 185px;
+  transition: 0.5 ease-in-out;
+}
+.galeria-port .imagen-port:hover .imgbx img {
+  max-width: 75px;
+}
+.galeria-port .imagen-port .hover-galeria {
+  position: absolute;
+  right: 0;
+  width: calc(100% - 60px);
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.galeria-port .imagen-port .hover-galeria h3 {
+  margin-bottom: 5px;
+  font-size: 22px;
+  color: #7f00ff;
+}
+.galeria-port .imagen-port .hover-galeria p {
+  margin-bottom: 5px;
+  font-size: 16px;
+  text-align: justify;
+}
+.galeria-port .imagen-port .hover-galeria a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 16px;
+  background: #7f00ff;
+  text-decoration: none;
+  color: #ffffff;
 }
 </style>
