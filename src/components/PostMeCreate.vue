@@ -67,7 +67,11 @@ export default {
   methods: {
     postear() {
       var myHeaders = new Headers();
-      myHeaders.append("Authorization", `"${localStorage.getItem("token")}"`);
+      myHeaders.append(
+        "Authorization",
+        `"${JSON.stringify(localStorage.getItem("token"))}"`
+      );
+
       var raw = `{\n	"title": "${this.title}",\n	"content": "${
         this.content
       }",\n	"published": true,\n	"user_id": ${localStorage.getItem(
@@ -76,14 +80,12 @@ export default {
 
       var requestOptions = {
         method: "POST",
-        headers: {
-          Authorization: localStorage.getItem("token")
-        },
+        headers: myHeaders,
         body: raw,
         redirect: "follow"
       };
       console.log(requestOptions);
-      fetch("https://software-app-blog.herokuapp.com/posts", requestOptions)
+      fetch("http://software-app-blog.herokuapp.com/posts", requestOptions)
         .then(response => console.log(response))
         .then(result => console.log(result))
         .catch(error => console.log("error", error));
