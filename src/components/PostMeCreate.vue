@@ -67,20 +67,19 @@ export default {
   methods: {
     postear() {
       var myHeaders = new Headers();
-      myHeaders.append(
-        "Authorization",
-        `"${JSON.stringify(localStorage.getItem("token"))}"`
-      );
+      myHeaders.append("Authorization", localStorage.getItem("token"));
 
       var raw = `{\n	"title": "${this.title}",\n	"content": "${
         this.content
-      }",\n	"published": true,\n	"user_id": ${localStorage.getItem(
+      }",\n	"published": 1,\n	"user_id": ${localStorage.getItem(
         "id"
       )},\n	"category_id": ${this.category}\n}`;
 
       var requestOptions = {
         method: "POST",
-        headers: myHeaders,
+        headers: {
+          Authorization: localStorage.getItem("token")
+        },
         body: raw,
         redirect: "follow"
       };
