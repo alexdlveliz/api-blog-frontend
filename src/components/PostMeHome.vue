@@ -5,6 +5,8 @@
         <router-link to="/">Inicio</router-link>
         <router-link to="/about">Nosotros</router-link>
         <router-link to="/login">Iniciar Sesión</router-link>
+        <router-link to="/general">Posts</router-link>
+        <router-link to="/create">Publicar</router-link>
         <!-- <a href="#">Inicio</a>
         <a href="#">Nosotros</a>
         <a href="#">Menu</a>

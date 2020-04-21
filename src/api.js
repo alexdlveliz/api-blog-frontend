@@ -7,6 +7,13 @@ async function getPosts() {
     .then((res) => res.posts);
 }
 
+async function getPostsComida(page) {
+  return await fetch(`${url}/posts/category?page=${page}&id=1`)
+    .then((res) => res.json())
+    .then((res) => res.posts);
+}
+
 export default {
   getPosts,
+  getPostsComida,
 };
