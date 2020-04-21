@@ -12,6 +12,9 @@ export default new Vuex.Store({
       password: "",
       rol: 0,
     },
+    idCategory:0,
+    categories:[],
+
   },
   mutations: {
     registrarUsuario() {
@@ -35,6 +38,12 @@ export default new Vuex.Store({
         .then((result) => console.log("Resultado:", result))
         .catch((error) => console.log("ha habido un error", error));
     },
+    setIdCategory(state, id,arrayCategories){
+      state.idCategory=id;
+    },
+    setCategories(state, categories){
+      state.categories=categories;
+    }
   },
   actions: {},
   modules: {},

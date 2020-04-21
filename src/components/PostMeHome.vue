@@ -62,9 +62,20 @@
             />
           </svg>
         </div>
-        <router-link to="/category">
-          <h2 class="titulob">Categorias</h2>
-        </router-link>
+        <h2 class="titulob">Categorias</h2>
+        <div class="contenedor-categorias">
+          <div class="galeria-port">
+            <div class="imagen-port" v-for="(item, index) of categories" v-bind:key="index">
+              <div class="imgbx">
+                <img src="@/assets/Imagenes-home/plantas.svg" alt />
+              </div>
+              <div class="hover-galeria">
+                <h3>{{item.name_category}}</h3>
+                <router-link to="/category"><a @click="setIdCategory(index+1)">Ver más</a></router-link>
+              </div>
+            </div>
+          </div>
+        </div>
         <div style="height: 150px; overflow: hidden;">
           <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
             <path
@@ -132,8 +143,27 @@
 </template>
 
 <script>
+import {mapState, mapMutations} from 'vuex';
 export default {
-  name: "PostMeHome"
+  name: "PostMeHome",
+  data() {
+    return {
+      categories:[],
+    }
+  },
+  methods: {
+    async getCategories() {
+      const datos = await fetch(
+        `https://software-app-blog.herokuapp.com/categories`
+      ).then(res => res.json());
+      this.categories = datos["categories"];
+      this.setCategories(this.categories)
+    },
+    ...mapMutations(['setIdCategory','setCategories'])
+  },
+  created() {
+    this.getCategories();
+  },
 };
 </script>
 

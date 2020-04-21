@@ -9,20 +9,7 @@
         <router-link to="/create">Publicar</router-link>
       </nav>
       <section class="textos-header">
-        <h1>Categorias</h1>
-        <div class="contenedor-categorias">
-          <div class="galeria-port">
-            <div class="imagen-port" v-for="(item, index) of categories" v-bind:key="index">
-              <div class="imgbx">
-                <img src="@/assets/Imagenes-home/plantas.svg" alt />
-              </div>
-              <div class="hover-galeria">
-                <h3>{{item.name_category}}</h3>
-                <a @click="getPostsCategory('posts/category?page=1&id='+(index+1)+'')">Ver más</a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <h1>{{this.categories[this.idCategory-1].name_category}}</h1>        
       </section>
       <div class="wave" style="height: 150px; overflow: hidden;">
         <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
@@ -83,6 +70,16 @@
         </div>
       </div>
     </div>
+    <div class="paginacion">
+      <button
+        :disabled="pagination.prev_page!=null ? false:true"
+        @click="getPostsCategory(pagination.prev_page)"
+      >Anterior</button>
+      <button
+        :disabled="pagination.next_page!=null ? false:true"
+        @click="getPostsCategory(pagination.next_page)"
+      >Siguiente</button>
+    </div>
     <section class="portafolio">
       <div style="height: 150px; overflow: hidden;">
         <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
@@ -99,36 +96,31 @@
 
 <script>
 import api from "@/api";
+import {mapState, mapMutations} from 'vuex';
 
 export default {
   name: "PostMeComida",
   data() {
     return {
       posts: [],
-      categories: [],
-      categoryId: -1,
       pagination: []
     };
   },
   methods: {
-    async getCategories() {
-      const datos = await fetch(
-        `https://software-app-blog.herokuapp.com/categories`
-      ).then(res => res.json());
-      this.categories = datos["categories"];
-    },
     async getPostsCategory(url) {
       const datos = await fetch(
         `https://software-app-blog.herokuapp.com/${url}`
       ).then(res => res.json());
       this.posts = datos["posts"];
       this.pagination = datos["meta"];
-      console.log(url);
     },
+  },
+  computed: {
+    ...mapState(['idCategory','categories'])
   },
   created() {
     //api.getPostsComida(1).then(posts => (this.posts = posts));
-    this.getCategories();
+    this.getPostsCategory("posts/category?page=1&id="+this.idCategory);
   }
 };
 </script>
@@ -509,6 +501,9 @@ header .textos-header {
   font-size: 12px;
   text-decoration: none;
   padding: 10px;
+}
+.paginacion button{
+  background: var(--color-categoria);
 }
 .portafolio {
   margin-top: 45px;
