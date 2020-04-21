@@ -22,21 +22,22 @@
       <p>Compartenos tus ideas y ayuda a otros a ser expertos como tu</p>
       <div class="contenedor-info">
         <h3>Ingresa un título a tu blog</h3>
-        <input type="text" class="titulo-post" />
+        <input type="text" class="titulo-post" v-model="title" />
         <h3>
           Ahora compartenos tus ideas, eres libre de excribir lo que quieras
           <br />¡Deja volar tu imaginación!
         </h3>
-        <input type="text" class="contenido-post" />
-        <select name="categorias">
+        <input type="text" class="contenido-post" v-model="content" />
+        <select name="categorias" v-model="category">
           <option value="1">Jardinería</option>
           <option value="2">Belleza</option>
-          <option value="3">comida</option>
+          <option value="3">Comida</option>
           <option value="4">Ejercicio</option>
           <option value="5">Espectáculos</option>
         </select>
         <!-- nombre del cuate -->
-        <a href id="Guardar">Guardar</a>
+        <!-- <a href id="Guardar" @click="postear">Guardar</a> -->
+        <button @click="postear">Guardar</button>
       </div>
     </div>
     <section class="portafolio">
@@ -55,7 +56,39 @@
 
 <script>
 export default {
-  name: "PostMeCreate"
+  name: "PostMeCreate",
+  data() {
+    return {
+      title: "",
+      content: "",
+      category: 1
+    };
+  },
+  methods: {
+    postear() {
+      var myHeaders = new Headers();
+      myHeaders.append("Authorization", `"${localStorage.getItem("token")}"`);
+      var raw = `{\n	"title": "${this.title}",\n	"content": "${
+        this.content
+      }",\n	"published": true,\n	"user_id": ${localStorage.getItem(
+        "id"
+      )},\n	"category_id": ${this.category}\n}`;
+
+      var requestOptions = {
+        method: "POST",
+        headers: {
+          Authorization: localStorage.getItem("token")
+        },
+        body: raw,
+        redirect: "follow"
+      };
+      console.log(requestOptions);
+      fetch("https://software-app-blog.herokuapp.com/posts", requestOptions)
+        .then(response => console.log(response))
+        .then(result => console.log(result))
+        .catch(error => console.log("error", error));
+    }
+  }
 };
 </script>
 
@@ -156,7 +189,7 @@ nav > a:hover {
 .contenedor-info .contenido-post {
   height: 600px;
 }
-.contenedor-info a {
+.contenedor-info button {
   width: 100px;
   height: 35px;
   background: var(--color-categoria);
@@ -175,6 +208,7 @@ nav > a:hover {
   text-decoration: none;
   padding: 10px;
 }
+
 .portafolio {
   margin-top: 45px;
   background: var(--color-categoria); /* fallback for old browsers*/
