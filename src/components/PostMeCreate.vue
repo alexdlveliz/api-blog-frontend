@@ -29,11 +29,8 @@
         </h3>
         <input type="text" class="contenido-post" v-model="content" />
         <select name="categorias" v-model="category">
-          <option value="1">Jardinería</option>
-          <option value="2">Belleza</option>
-          <option value="3">Comida</option>
-          <option value="4">Ejercicio</option>
-          <option value="5">Espectáculos</option>
+          <!-- <option value="32">{{categories}}</option> -->
+          <option v-for="cat in categories" :key="cat.id">{{cat.name_category}}</option>
         </select>
         <!-- nombre del cuate -->
         <!-- <a href id="Guardar" @click="postear">Guardar</a> -->
@@ -55,6 +52,8 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from "vuex";
+
 export default {
   name: "PostMeCreate",
   data() {
@@ -64,7 +63,11 @@ export default {
       category: 1
     };
   },
+  computed: {
+    ...mapState(["categories"])
+  },
   methods: {
+    ...mapMutations(["setIdCategory"]),
     postear() {
       var myHeaders = new Headers();
       myHeaders.append("Authorization", localStorage.getItem("token"));

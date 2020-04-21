@@ -75,13 +75,15 @@
       </div>
     </div>
     <button
-        :disabled="pagination.prev_page!=null ? false:true"
-        @click="getPosts(pagination.prev_page)"
-      >Anterior</button>
-      <button
-        :disabled="pagination.next_page!=null ? false:true"
-        @click="getPosts(pagination.next_page)"
-      >Siguiente</button>
+      class="botones"
+      :disabled="pagination.prev_page!=null ? false:true"
+      @click="getPosts(pagination.prev_page)"
+    >Anterior</button>
+    <button
+      class="botones"
+      :disabled="pagination.next_page!=null ? false:true"
+      @click="getPosts(pagination.next_page)"
+    >Siguiente</button>
     <section class="portafolio">
       <div style="height: 150px; overflow: hidden;">
         <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
@@ -484,6 +486,25 @@ header .textos-header {
   border: 1px solid var(--color-categoria);
 }
 .comentarios a {
+  width: 100px;
+  height: 35px;
+  background: var(--color-categoria);
+  color: #ffffff;
+  text-align: center;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  margin-left: 460px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #333;
+  letter-spacing: 1px;
+  font-size: 12px;
+  text-decoration: none;
+  padding: 10px;
+}
+.botones {
   width: 100px;
   height: 35px;
   background: var(--color-categoria);
