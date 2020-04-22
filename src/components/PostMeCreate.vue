@@ -60,23 +60,30 @@ export default {
     return {
       title: "",
       content: "",
-      category: 1
+      category: ""
     };
   },
   computed: {
     ...mapState(["categories"])
   },
   methods: {
-    ...mapMutations(["setIdCategory"]),
     postear() {
+      //Encontrando el índice del array de objetos categories
+      let array = [];
+      for (let index = 0; index < this.categories.length; index++) {
+        let cat = this.categories[index].name_category;
+        array.push(cat);
+      }
+      let id = array.indexOf(this.category);
+
+      //Creación de parámetros para la petición
       var myHeaders = new Headers();
       myHeaders.append("Authorization", localStorage.getItem("token"));
-
       var raw = `{\n	"title": "${this.title}",\n	"content": "${
         this.content
       }",\n	"published": 1,\n	"user_id": ${localStorage.getItem(
         "id"
-      )},\n	"category_id": ${this.category}\n}`;
+      )},\n	"category_id": ${id + 1}\n}`;
 
       var requestOptions = {
         method: "POST",
@@ -86,7 +93,8 @@ export default {
         body: raw,
         redirect: "follow"
       };
-      console.log(requestOptions);
+
+      //Petición a la API
       fetch("http://software-app-blog.herokuapp.com/posts", requestOptions)
         .then(response => console.log(response))
         .then(result => console.log(result))
