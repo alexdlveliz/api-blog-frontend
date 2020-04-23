@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="post">
     <header>
       <nav>
         <a href="#">Inicio</a>
@@ -38,7 +38,7 @@
           </div>
         </div>
         <div class="bannerImg" id="slideshow">
-          <img src="../vista-post/img/food6.jpg" alt />
+          <img src="../assets/Imagenes-comida/food6.jpg" alt />
         </div>
       </div>
       <div class="bloguer">
@@ -46,7 +46,7 @@
           <div class="cards">
             <div class="card">
               <div class="imgBox">
-                <img src="../vista-post/img/face2.jpg" alt />
+                <img src="../assets/Imagenes-comida/face2.jpg" alt />
               </div>
               <div class="contenido-texto-card">
                 <h4>Alex de leon</h4>
@@ -61,15 +61,15 @@
         </div>
       </div>
     </div>
-    <div class="comentario-card" id="modal">
+    <!-- <div class="comentario-card" id="modal">
       <div class="flex" id="flex">
         <div class="contenido-modal">
           <div class="modal-header">
-            <h2>Comentarios</h2>
+            <h2>Comentariossssss</h2>
           </div>
           <div class="modal-body">
-            <div class="comentario-cont">
-              <h3>Usuario</h3>
+            <div class="comentario-cont" v-for="(item, index) of comments" v-bind:key="index">
+              <h3>{{item.user.name}} </h3>
               <p>
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta repellendus quo, eius
                 repudiandae, autem vitae aut ipsam optio dignissimos, consequuntur provident dicta doloremque
@@ -96,7 +96,21 @@
           <div class="modal-footer"></div>
         </div>
       </div>
+    </div>-->
+    <div class="flex">
+      <div class="contenido-modal">
+        <div class="modal-header">
+          <h2>Comentarios</h2>
+          <div class="modal-body">
+            <div class="comentario-cont" v-for="(item, index) of comments" v-bind:key="index">
+              <h3>{{item.user.name}}</h3>
+              <p>{{item.content}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
     <section class="portafolio">
       <div style="height: 150px; overflow: hidden;">
         <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
@@ -112,7 +126,31 @@
 </template>
 
 <script>
-export default {};
+import { mapState, mapMutations } from "vuex";
+export default {
+  name: "PostMePost",
+  data() {
+    return {
+      comments: [],
+      pagination: []
+    };
+  },
+  methods: {
+    async getComments(url) {
+      const datos = await fetch(
+        `https://software-app-blog.herokuapp.com/${url}`
+      ).then(res => res.json());
+      this.pagination = datos.meta;
+      this.comments = datos.comments;
+    }
+  },
+  computed: {
+    ...mapState(["post"])
+  },
+  created() {
+    this.getComments(this.post.comments_link);
+  }
+};
 </script>
 
 <style >
@@ -137,7 +175,7 @@ export default {};
       hsla(59, 100%, 50%, 0.38),
       hsla(59, 100%, 50%, 0.95)
     ),
-    url(../vista-post/img/fondo2.jpg);
+    url(../assets/Imagenes-comida/face2.jpg);
 }
 /*---------------HEADER---------------*/
 .waveuno {

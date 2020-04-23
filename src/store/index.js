@@ -14,6 +14,7 @@ export default new Vuex.Store({
     },
     idCategory:0,
     categories:[],
+    post:[],
 
   },
   mutations: {
@@ -43,6 +44,9 @@ export default new Vuex.Store({
     },
     setCategories(state, categories){
       state.categories=categories;
+    },
+    setPost(state, post){
+      state.post=post
     }
   },
   actions: {},

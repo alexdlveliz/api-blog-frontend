@@ -44,8 +44,7 @@
             <div>
               <h2>{{item.title}}</h2>
               <p>{{item.content}}</p>
-              <a href="#">Ver mas</a>
-              <a href="#">Comentarios</a>
+              <router-link to="/post"><a @click="setPost(item)">Ver más</a></router-link>
             </div>
           </div>
           <div class="bannerImg" id="slideshow">
@@ -60,8 +59,7 @@
             <div>
               <h2>{{item.title}}</h2>
               <p>{{item.content}}</p>
-              <a href="#">Ver mas</a>
-              <a href="#">Comentarios</a>
+              <router-link to="/post"><a>Ver más</a></router-link>
             </div>
           </div>
           <div class="bloguer">
@@ -126,6 +124,7 @@ export default {
       this.posts = datos["posts"];
       this.pagination = datos["meta"];
     },
+    ...mapMutations(['setPost'])
   },
   computed: {
     ...mapState(['idCategory','categories'])
@@ -133,7 +132,7 @@ export default {
   created() {
     //api.getPostsComida(1).then(posts => (this.posts = posts));
     this.getPostsCategory("posts/category?page=1&id="+this.idCategory);
-  }
+  },
 };
 </script>
 
