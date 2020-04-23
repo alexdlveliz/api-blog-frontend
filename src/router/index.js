@@ -37,6 +37,11 @@ const routes = [
     name: "Create",
     component: () => import("../views/Create.vue"),
   },
+  {
+    path: "/post",
+    name: "Post",
+    component: () => import("../views/Post.vue"),
+  },
 ];
 
 const router = new VueRouter({
