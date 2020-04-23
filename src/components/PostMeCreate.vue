@@ -88,7 +88,9 @@ export default {
       var requestOptions = {
         method: "POST",
         headers: {
-          Authorization: localStorage.getItem("token")
+          Authorization: localStorage.getItem("token"),
+          "Accept": "application/json",
+          "Content-type": "application/json"
         },
         body: raw,
         redirect: "follow"
