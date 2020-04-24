@@ -20,7 +20,7 @@
             </linearGradient>
           </defs>
           <path
-            fill="url(#grad1)"
+            fill="#00000"
             fill-opacity="1"
             d="M0,96L17.1,122.7C34.3,149,69,203,103,224C137.1,245,171,235,206,202.7C240,171,274,117,309,117.3C342.9,117,377,171,411,165.3C445.7,160,480,96,514,64C548.6,32,583,32,617,74.7C651.4,117,686,203,720,208C754.3,213,789,139,823,101.3C857.1,64,891,64,926,69.3C960,75,994,85,1029,117.3C1062.9,149,1097,203,1131,224C1165.7,245,1200,235,1234,208C1268.6,181,1303,139,1337,128C1371.4,117,1406,139,1423,149.3L1440,160L1440,0L1422.9,0C1405.7,0,1371,0,1337,0C1302.9,0,1269,0,1234,0C1200,0,1166,0,1131,0C1097.1,0,1063,0,1029,0C994.3,0,960,0,926,0C891.4,0,857,0,823,0C788.6,0,754,0,720,0C685.7,0,651,0,617,0C582.9,0,549,0,514,0C480,0,446,0,411,0C377.1,0,343,0,309,0C274.3,0,240,0,206,0C171.4,0,137,0,103,0C68.6,0,34,0,17,0L0,0Z"
           />
@@ -56,7 +56,11 @@
                 <span class="escritor">Escritor</span>
               </label>
             </div>
-            <input type="password" placeholder="Contraseña" v-model="data.password" />
+            <input
+              type="password"
+              placeholder="Contraseña"
+              v-model="data.password"
+            />
             <button @click="registrarUsuario">Regístrate</button>
           </div>
         </div>
@@ -70,7 +74,11 @@
             <span>Ingresa con tu cuenta</span>
             <!-- <input type="text" placeholder="Usuario" /> -->
             <input type="text" placeholder="Email" v-model="login.email" />
-            <input type="password" placeholder="Contraseña" v-model="login.password" />
+            <input
+              type="password"
+              placeholder="Contraseña"
+              v-model="login.password"
+            />
             <a href="#">¿Olvidaste tu contraseña?</a>
             <button @click="iniciarSesion">Iniciar sesión</button>
           </div>
@@ -84,7 +92,9 @@
             </div>
             <div class="overlay-panel overlay-right">
               <h1>Esto es post-me!</h1>
-              <p>Registrate y comienza a compartir y crear cosas junto a nosotros</p>
+              <p>
+                Registrate y comienza a compartir y crear cosas junto a nosotros
+              </p>
               <button class="ghost" id="signUp">Registrate</button>
             </div>
           </div>
@@ -129,12 +139,12 @@ export default {
         usuario: "",
         correo: "",
         password: "",
-        rol: 0
+        rol: 0,
       },
       login: {
         email: "",
-        password: ""
-      }
+        password: "",
+      },
     };
   },
   computed: {},
@@ -153,13 +163,13 @@ export default {
           redirect: "follow",
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*"
+            "Access-Control-Allow-Origin": "*",
           },
-          body: raw
+          body: raw,
         })
-          .then(response => console.log("Respuesta", response))
-          .then(result => console.log("Resultado:", result))
-          .catch(error => console.log("ha habido un error", error));
+          .then((response) => console.log("Respuesta", response))
+          .then((result) => console.log("Resultado:", result))
+          .catch((error) => console.log("ha habido un error", error));
     },
     async iniciarSesion() {
       //Creación de los parámetros a enviar
@@ -167,7 +177,7 @@ export default {
       var requestOptions = {
         method: "POST",
         body: raw,
-        redirect: "follow"
+        redirect: "follow",
       };
 
       //Llamada a la API
@@ -175,8 +185,8 @@ export default {
         `http://software-app-blog.herokuapp.com/auth/login?email=${this.login.email}&password=${this.login.password}`,
         requestOptions
       )
-        .then(response => response.text())
-        .then(result => {
+        .then((response) => response.text())
+        .then((result) => {
           //manejo de datos correctos o incorrectos
           let data = JSON.parse(result);
           if (data.token == null) {
@@ -189,9 +199,9 @@ export default {
             this.$router.push("/general");
           }
         })
-        .catch(error => console.log("error:", error));
-    }
-  }
+        .catch((error) => console.log("error:", error));
+    },
+  },
 };
 </script>
 
@@ -213,6 +223,21 @@ body {
   text-align: right;
   background: -webkit-linear-gradient(
     0deg,
+    black,
+    black
+      /* #00fff5,
+    #bcff00,
+    #ffee00,
+    #ffc100,
+    #ff59c1,
+    #e762ff */
+  );
+  padding-top: 25px;
+  padding-right: 25px;
+}
+.header-log nav > a {
+  background: -webkit-linear-gradient(
+    175deg,
     #00fff5,
     #bcff00,
     #ffee00,
@@ -220,11 +245,8 @@ body {
     #ff59c1,
     #e762ff
   );
-  padding-top: 25px;
-  padding-right: 25px;
-}
-.header-log nav > a {
-  color: floralwhite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-family: "Pacifico", cursive;
   font-size: 25px;
   text-decoration: none;
