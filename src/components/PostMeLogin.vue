@@ -7,7 +7,7 @@
         <!-- <a href="#">Inicio</a>
         <a href="#">Ayuda</a>-->
       </nav>
-      <div class="wave">
+      <div class="wave-log">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
           <path
             fill="#8811fe"
@@ -215,7 +215,7 @@ nav > a {
 nav > a:hover {
   text-decoration: underline;
 }
-.wave {
+.wave-log {
   position: fixed;
   width: 100%;
 }

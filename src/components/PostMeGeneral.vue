@@ -1,6 +1,6 @@
 <template>
   <div id="general">
-    <header>
+    <div class="header-gen">
       <nav>
         <router-link to="/">Inicio</router-link>
         <router-link to="/about">Nosotros</router-link>
@@ -8,7 +8,7 @@
         <router-link to="/general">Posts</router-link>
         <router-link to="/create">Publicar</router-link>
       </nav>
-      <section class="textos-header">
+      <section class="textos-header-gen">
         <h1>Posts</h1>
         <h2>En esta seccion encontraras todos nuestros post, si deseas leer sobre algo en específico</h2>
         <div class="ver-cat borde-col">
@@ -17,7 +17,7 @@
           </router-link>
         </div>
       </section>
-      <div class="wave" style="height: 150px; overflow: hidden;">
+      <div class="wave-gen" style="height: 150px; overflow: hidden;">
         <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
           <path
             d="M-5.42,86.94 C279.00,142.20 383.97,-97.59 500.00,49.99 L500.00,150.00 L0.00,150.00 Z"
@@ -25,7 +25,7 @@
           />
         </svg>
       </div>
-    </header>
+    </div>
     <div v-for="(item, index) of posts" v-bind:key="index">
       <div :class="[index%2==0 ? 'container':'container2']">
         <div class="otro">
@@ -37,7 +37,7 @@
               <div class="cards">
                 <div class="card">
                   <div class="imgBox">
-                    <img src="@/assets/Imagenes-comida/face2.jpg" alt />
+                    <img src="../assets/Imagenes-comida/face.jpg" alt />
                   </div>
                   <div class="contenido-texto-card">
                     <h4>{{item.user.name}}</h4>
@@ -56,12 +56,12 @@
             </div>
           </div>
           <div class="bannerImg" id="slideshow">
-            <img src="@/assets/Imagenes-comida/food6.jpg" alt />
+            <img src="../assets/Imagenes-comida/food4.jpg" alt />
           </div>
         </div>
         <div class="content" v-else>
           <div class="bannerImg">
-            <img class="active" src="@/assets/Imagenes-comida/food6.jpg" alt />
+            <img src="../assets/Imagenes-comida/food6.jpg" alt />
           </div>
           <div class="bannerText">
             <div>
@@ -77,7 +77,7 @@
               <div class="cards">
                 <div class="card">
                   <div class="imgBox">
-                    <img src="@/assets/Imagenes-comida/face2.jpg" alt />
+                    <img src="../assets/Imagenes-comida/face1.jpg" alt />
                   </div>
                   <div class="contenido-texto-card">
                     <h4>{{item.user.name}}</h4>
@@ -151,8 +151,8 @@ export default {
   font-family: "Poppins", sans-serif;
 }
 :root {
-  --color-categoria: #03b0f5;
-  --colores: -webkit-linear-gradient(
+  --color-gen: #e762ff;
+  --colores-gen: -webkit-linear-gradient(
     175deg,
     #00fff5,
     #bcff00,
@@ -161,7 +161,7 @@ export default {
     #ff59c1,
     #e762ff
   );
-  --colores-cir: -webkit-linear-gradient(
+  --colores-cir-gen: -webkit-linear-gradient(
     60deg,
     #00fff5,
     #bcff00,
@@ -170,18 +170,18 @@ export default {
     #ff59c1,
     #e762ff
   );
-  --gradiente: linear-gradient(
+  --gradiente-gen: linear-gradient(
       to right,
-      hsla(0, 0%, 0%, 0.38),
-      hsla(0, 0%, 0%, 0.38)
+      hsla(0, 0%, 0%, 0.75),
+      hsla(0, 0%, 0%, 0.75)
     ),
-    url(../assets/Imagenes-comida/fondo.jpg);
-  --webkit-gradient: -webkit-linear-gradient(
+    url(../assets/Imagenes-comida/fondogen.jpg);
+  --webkit-gradient-gen: -webkit-linear-gradient(
       to right,
-      hsla(189, 100%, 50%, 0.38),
-      hsla(189, 100%, 50%, 0.38)
+      hsla(0, 0%, 2%, 0.75),
+      hsla(0, 0%, 0%, 0.75)
     ),
-    url(../assets/Imagenes-comida/fondo.jpg);
+    url(../assets/Imagenes-comida/fondogen.jpg);
 }
 /*---------------HEADER---------------*/
 /* .waveuno {
@@ -190,53 +190,53 @@ export default {
   width: 100%;
 } */
 
-header {
+.header-gen {
   width: 100%;
   height: 685px;
-  background: var(--color-categoria); /* fallback for old browsers*/
-  background: var(--webkit-gradient); /* Chrome 10-25, Safari 5.1-6*/
+  background: var(--color-gen); /* fallback for old browsers*/
+  background: var(--webkit-gradient-gen); /* Chrome 10-25, Safari 5.1-6*/
   background: var(
-    --gradiente
+    --gradiente-gen
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background-size: cover;
   background-attachment: fixed;
   position: relative;
   text-align: center;
 }
-nav {
+.header-gen nav {
   text-align: right;
   padding: 30px 50px 0 0;
 }
-nav > a {
+.header-gen nav > a {
   font-family: "Pacifico", cursive;
   font-size: 25px;
   text-decoration: none;
   margin-right: 12px;
 }
-nav > a:hover {
+.header-gen nav > a:hover {
   text-decoration: underline;
 }
-nav a:nth-child(1) {
+.header-gen nav a:nth-child(1) {
   color: #00feca;
 }
-nav a:nth-child(2) {
+.header-gen nav a:nth-child(2) {
   color: #bcff00;
 }
-nav a:nth-child(3) {
+.header-gen nav a:nth-child(3) {
   color: #ffc100;
 }
-nav a:nth-child(4) {
+.header-gen nav a:nth-child(4) {
   color: #ffee00;
 }
-nav a:nth-child(5) {
+.header-gen nav a:nth-child(5) {
   color: #ff59c1;
 }
-.wave {
+.wave-gen {
   position: absolute;
   bottom: 0;
   width: 100%;
 }
-header .textos-header {
+.header-gen .textos-header-gen {
   display: flex;
   height: 430px;
   width: 100%;
@@ -244,14 +244,14 @@ header .textos-header {
   justify-content: center;
   flex-direction: column;
 }
-.textos-header h1 {
-  background: var(--colores);
+.textos-header-gen h1 {
+  background: var(--colores-gen);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 135px;
   font-family: "Rock Salt", cursive;
 }
-.textos-header h2 {
+.textos-header-gen h2 {
   color: floralwhite;
   font-weight: 200;
   font-size: 25px;
@@ -293,7 +293,7 @@ header .textos-header {
   right: 0;
   width: 325px;
   height: 100%;
-  background: var(--colores-cir);
+  background: var(--colores-cir-gen);
   border-radius: 100% 0% 0% 100%/50% 0% 0% 50%;
   transform: scaleY(-1);
   z-index: -2;
@@ -311,16 +311,16 @@ header .textos-header {
   left: 0;
   width: 325px;
   height: 100%;
-  background: var(--colores-cir);
+  background: var(--colores-cir-gen);
   border-radius: 0% 100% 100% 0%/0% 50% 50% 0%;
   transform: scaleY(-1);
   z-index: -2;
 }
-/* .container2 .vacio2 {
+.container2 .vacio2 {
   position: relative;
   width: 420px;
   height: 100%;
-} */
+}
 .content {
   display: flex;
   justify-content: space-between;
@@ -364,7 +364,7 @@ header .textos-header {
   display: inline-block;
   text-transform: uppercase;
   font-weight: 700;
-  background: var(--colores);
+  background: var(--colores-gen);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: 1px;
@@ -478,7 +478,7 @@ header .textos-header {
 }
 .card:before,
 .card:after {
-  background: var(--colores);
+  background: var(--colores-gen);
 }
 .card .contenido-texto-card {
   position: absolute;
@@ -572,16 +572,16 @@ header .textos-header {
 .portafolio {
   margin-top: 45px;
   background: var(--color-categoria); /* fallback for old browsers*/
-  background: var(--webkit-gradient); /* Chrome 10-25, Safari 5.1-6*/
+  background: var(--webkit-gradient-gen); /* Chrome 10-25, Safari 5.1-6*/
   background: var(
-    --gradiente
+    --gradiente-gen
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background-size: cover;
   background-attachment: fixed;
 }
 .portafolio h2 {
   text-align: center;
-  background: var(--colores);
+  background: var(--colores-gen);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
