@@ -2,11 +2,11 @@
   <div id="post">
     <header>
       <nav>
-        <a href="#">Inicio</a>
-        <a href="#">Nosotros</a>
-        <a href="#">Menu</a>
-        <a href="#">Iniciar sesion</a>
-        <a href="#">Registrate</a>
+        <router-link to="/">Inicio</router-link>
+        <router-link to="/about">Nosotros</router-link>
+        <router-link to="/login">Iniciar Sesión</router-link>
+        <router-link to="/general">Posts</router-link>
+        <router-link to="/create">Publicar</router-link>
       </nav>
       <div class="wave" style="height: 150px; overflow: hidden;">
         <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
@@ -21,20 +21,8 @@
       <div class="content" id="uno">
         <div class="bannerText">
           <div>
-            <h2>Hamburguesas vegetarianas</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur iste aut quis provident, a perferendis
-              sunt ullam dolores, quasi magnam quae accusantium neque eos! Magnam fuga vitae accusamus delectus sequi
-              voluptatum voluptate voluptas. Repudiandae ullam quibusdam fuga non dicta ex asperiores. Deleniti exercitationem
-              velit, dolore qui quasi totam natus. Aliquid, fugiat corrupti officiis eius nobis, aut, dolore pariatur ad est
-              minima nihil cumque alias voluptatibus omnis neque dolorem tempore nesciunt.
-              <br />Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur iste aut quis provident, a perferendis
-              sunt ullam dolores, quasi magnam quae accusantium neque eos! Magnam fuga vitae accusamus delectus sequi
-              voluptatum voluptate voluptas. Repudiandae ullam quibusdam fuga non dicta ex asperiores. Deleniti exercitationem
-              velit, dolore qui quasi totam natus. Aliquid, fugiat corrupti officiis eius nobis, aut, dolore pariatur ad est
-              minima nihil cumque alias voluptatibus omnis neque dolorem tempore nesciunt.
-            </p>
-            <a href="#uno" class="abrir-coment">Comentarios</a>
+            <h2>{{post.title}}</h2>
+            <p>{{post.content}}</p>
           </div>
         </div>
         <div class="bannerImg" id="slideshow">
@@ -44,18 +32,19 @@
       <div class="bloguer">
         <div class="contenedor-bloguer">
           <div class="cards">
+            <h3>Autor</h3>
             <div class="card">
               <div class="imgBox">
                 <img src="../assets/Imagenes-comida/face2.jpg" alt />
               </div>
               <div class="contenido-texto-card">
-                <h4>Alex de leon</h4>
+                <h4>{{post.user.name}}</h4>
               </div>
             </div>
             <div class="comentarios">
               <h1>Haz un comentario</h1>
-              <input type="text" />
-              <a href="#">Enviar</a>
+              <input type="text" placeholder="Escribe algo" v-model="comment" />
+              <a href="#" @click="publishComment">Enviar</a>
             </div>
           </div>
         </div>
@@ -97,15 +86,18 @@
         </div>
       </div>
     </div>-->
-    <div class="flex">
-      <div class="contenido-modal">
-        <div class="modal-header">
-          <h2>Comentarios</h2>
-          <div class="modal-body">
-            <div class="comentario-cont" v-for="(item, index) of comments" v-bind:key="index">
-              <h3>{{item.user.name}}</h3>
-              <p>{{item.content}}</p>
+    <div class="comentario-card" id="modal">
+      <div class="flex" id="flex">
+        <div class="contenido-modal">
+          <div class="modal-header">
+            <h2>Comentarios</h2>
+            <div class="modal-body">
+              <div class="comentario-cont" v-for="(item, index) of comments" v-bind:key="index">
+                <h3>{{ item.user.name }}</h3>
+                <p>{{ item.content }}</p>
+              </div>
             </div>
+            <div class="modal-footer"></div>
           </div>
         </div>
       </div>
@@ -127,12 +119,15 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
+import api from "@/api";
+
 export default {
   name: "PostMePost",
   data() {
     return {
       comments: [],
-      pagination: []
+      pagination: [],
+      comment: ""
     };
   },
   methods: {
@@ -142,6 +137,12 @@ export default {
       ).then(res => res.json());
       this.pagination = datos.meta;
       this.comments = datos.comments;
+    },
+    publishComment() {
+      //Creación de la petición
+      let user_id = localStorage.getItem("id");
+      let post_id = this.post.comments_link.split("=")[1];
+      api.publishComment(this.comment, user_id, post_id);
     }
   },
   computed: {
@@ -153,7 +154,7 @@ export default {
 };
 </script>
 
-<style >
+<style>
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap");
 * {
   margin: 0;
@@ -163,7 +164,7 @@ export default {
 }
 :root {
   --color-categoria: #f5f003;
-  --color-categoria-imput: #fa8c3f;
+  --color-categoria-input: #fa8c3f;
   --gradiente: linear-gradient(
       to right,
       hsla(59, 100%, 50%, 0.38),
@@ -175,7 +176,7 @@ export default {
       hsla(59, 100%, 50%, 0.38),
       hsla(59, 100%, 50%, 0.95)
     ),
-    url(../assets/Imagenes-comida/face2.jpg);
+    url(../assets/Imagenes-comida/fondo2.jpg);
 }
 /*---------------HEADER---------------*/
 .waveuno {
@@ -462,6 +463,7 @@ nav > a:hover {
 .comentarios input {
   position: relative;
   text-align: justify;
+  outline: none;
   width: 98%;
   height: 100%;
   margin: 5px;
@@ -561,4 +563,35 @@ nav > a:hover {
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   font-size: 20px;
 }
+
+/* BORDE COLOREADO */
+/* .ver-cat .borde-col::before,
+.ver-cat .borde-col::after {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: -8px;
+  background: var(--colores);
+  background-size: 300%;
+  width: calc(100% +16px);
+  height: calc(100%+16px);
+  z-index: -1;
+  animation: BGgradient 15s ease infinite;
+}
+@keyframes BGgradient {
+  0% {
+    background-position: 0% 200%;
+  }
+  50% {
+    background-position: 200% 0%;
+  }
+  100% {
+    background-position: 0% 330%;
+  }
+}
+.borde-col::after {
+  filter: brightness(1.4);
+  filter: drop-shadow(16px 16px 20px rgb(248, 220, 97));
+  filter: blur(15px);
+} */
 </style>
