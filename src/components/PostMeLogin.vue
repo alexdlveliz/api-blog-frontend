@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <!--ENCABEZADO-WAVE-NAV-->
-    <header>
+    <div class="header-log">
       <nav>
         <router-link to="/">Inicio</router-link>
         <!-- <a href="#">Inicio</a>
@@ -9,14 +9,24 @@
       </nav>
       <div class="wave-log">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <defs>
+            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#00FFF5;stop-opacity:1" />
+              <stop offset="22%" style="stop-color:#BCFF00;stop-opacity:1" />
+              <stop offset="40%" style="stop-color:#FFEE00;stop-opacity:1" />
+              <stop offset="62%" style="stop-color:#FFC100;stop-opacity:1" />
+              <stop offset="78%" style="stop-color:#FF59C1;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#E762FF;stop-opacity:1" />
+            </linearGradient>
+          </defs>
           <path
-            fill="#8811fe"
+            fill="url(#grad1)"
             fill-opacity="1"
             d="M0,96L17.1,122.7C34.3,149,69,203,103,224C137.1,245,171,235,206,202.7C240,171,274,117,309,117.3C342.9,117,377,171,411,165.3C445.7,160,480,96,514,64C548.6,32,583,32,617,74.7C651.4,117,686,203,720,208C754.3,213,789,139,823,101.3C857.1,64,891,64,926,69.3C960,75,994,85,1029,117.3C1062.9,149,1097,203,1131,224C1165.7,245,1200,235,1234,208C1268.6,181,1303,139,1337,128C1371.4,117,1406,139,1423,149.3L1440,160L1440,0L1422.9,0C1405.7,0,1371,0,1337,0C1302.9,0,1269,0,1234,0C1200,0,1166,0,1131,0C1097.1,0,1063,0,1029,0C994.3,0,960,0,926,0C891.4,0,857,0,823,0C788.6,0,754,0,720,0C685.7,0,651,0,617,0C582.9,0,549,0,514,0C480,0,446,0,411,0C377.1,0,343,0,309,0C274.3,0,240,0,206,0C171.4,0,137,0,103,0C68.6,0,34,0,17,0L0,0Z"
           />
         </svg>
       </div>
-    </header>
+    </div>
     <!--ENCABEZADO-WAVE-NAV-->
     <!--CONTENEDOR GENERAL-->
     <div class="general">
@@ -199,20 +209,28 @@ body {
   margin: 0;
 }
 /*--------BARRA NAV-------*/
-nav {
+.header-log nav {
   text-align: right;
-  background: #8811fe;
+  background: -webkit-linear-gradient(
+    0deg,
+    #00fff5,
+    #bcff00,
+    #ffee00,
+    #ffc100,
+    #ff59c1,
+    #e762ff
+  );
   padding-top: 25px;
   padding-right: 25px;
 }
-nav > a {
+.header-log nav > a {
   color: floralwhite;
   font-family: "Pacifico", cursive;
-  font-size: 18px;
+  font-size: 25px;
   text-decoration: none;
   margin-right: 12px;
 }
-nav > a:hover {
+.header-log nav > a:hover {
   text-decoration: underline;
 }
 .wave-log {
@@ -451,7 +469,7 @@ input {
   transform: translateX(-100%);
 }
 .overlay {
-  background: linear-gradient(to right, #af60fe, #8811fe, #8811fe, #af60fe);
+  background: linear-gradient(0deg, #af60fe, #af60fe /* , #cd9cfe, #af60fe */);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
