@@ -32,7 +32,7 @@
       <div class="bloguer-post">
         <div class="contenedor-bloguer-post">
           <div class="cards-post">
-            <h3>Autor</h3>
+            <!-- <h3>Autor</h3> -->
             <div class="card-post">
               <div class="imgBox-post">
                 <img src="../assets/Imagenes-comida/face2.jpg" alt />
@@ -130,8 +130,9 @@ export default {
   font-family: "Poppins", sans-serif;
 }
 :root {
+  --gradiente-bloguer: linear-gradient(0deg, #f5f003, #f5f003);
   --color-categoria-post: #f5f003;
-  --color-categoria-input-post: #fa8c3f;
+  --color-categoria-input-post: #f5f003;
   --gradiente-post: linear-gradient(
       to right,
       hsla(0, 0%, 0%, 0.58),
@@ -154,7 +155,7 @@ export default {
 
 .header-post {
   width: 100%;
-  height: 200px;
+  height: 250px;
   background: var(--color-categoria-post); /* fallback for old browsers*/
   background: var(--webkit-gradient-post); /* Chrome 10-25, Safari 5.1-6*/
   background: var(
@@ -167,7 +168,7 @@ export default {
 }
 .header-post nav {
   text-align: right;
-  padding: 10px 50px 0 0;
+  padding: 25px 50px 0 0;
 }
 .header-post nav > a {
   color: var(--color-categoria-post);
@@ -354,7 +355,7 @@ export default {
 }
 .card-post:before,
 .card-post:after {
-  background: var(--gradiente);
+  background: var(--gradiente-bloguer);
 }
 .card-post .contenido-texto-card-post {
   position: absolute;
@@ -485,11 +486,12 @@ export default {
   text-decoration: none;
   cursor: pointer;
 }
-.modal-header-post,
-.modal-footer-post {
+.modal-header-post {
   padding: 8px 16px;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap-reverse;
+  border: 2px solid var(--color-categoria-post);
+  border-radius: 15px;
   background: var(--color-categoria-post);
 }
 .modal-header-post h2 {
@@ -519,7 +521,7 @@ export default {
   background: var(--color-categoria-post); /* fallback for old browsers*/
   background: var(--webkit-gradient-post); /* Chrome 10-25, Safari 5.1-6*/
   background: var(
-    --gradiente
+    --gradiente-post
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background-size: cover;
   background-attachment: fixed;
