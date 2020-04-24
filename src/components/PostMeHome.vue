@@ -85,6 +85,7 @@
             >
               <div class="fondo-img">
                 <div class="imgbx">
+                  <h3>Categoria</h3>
                   <img src="@/assets/Imagenes-home/cat.svg" alt />
                 </div>
                 <div class="hover-galeria">
@@ -534,10 +535,24 @@ header .textos-header {
   border-radius: 45px;
   z-index: 2;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   transition: 0.5s ease-in-out;
+}
+.galeria-port .imagen-port .fondo-img .imgbx h3 {
+  background: linear-gradient(
+    175deg,
+    #00fff5,
+    #bcff00,
+    #ffee00,
+    #ffc100,
+    #ff59c1,
+    #e762ff
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .galeria-port .imagen-port:hover .fondo-img .imgbx {
