@@ -11,9 +11,9 @@
       <section class="textos-header-gen">
         <h1>Posts</h1>
         <h2>En esta seccion encontraras todos nuestros post, si deseas leer sobre algo en específico</h2>
-        <div class="ver-cat borde-col">
+        <div class="ver-cat">
           <router-link to="/category">
-            <h2>click aquí para ver por categorias</h2>
+            <a>click aquí para ver por categorias</a>
           </router-link>
         </div>
       </section>
@@ -252,10 +252,9 @@ export default {
   font-family: "Rock Salt", cursive;
 }
 .textos-header-gen h2 {
-  color: floralwhite;
+  color: white;
   font-weight: 200;
   font-size: 25px;
-  font-family: "Roboto Mono", monospace;
 }
 .ver-cat {
   background: black;
@@ -263,7 +262,10 @@ export default {
   padding: 5px;
 }
 .ver-cat a {
-  color: white;
+  background: var(--colores-gen);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 18px;
   text-decoration: none;
 }
 
