@@ -28,6 +28,7 @@
           <br />¡Deja volar tu imaginación!
         </h3>
         <input type="text" class="contenido-post" v-model="content" />
+        <h3>Elige una categoria</h3>
         <select name="categorias" v-model="category">
           <!-- <option value="32">{{categories}}</option> -->
           <option v-for="cat in categories" :key="cat.id">{{cat.name_category}}</option>
@@ -89,7 +90,7 @@ export default {
         method: "POST",
         headers: {
           Authorization: localStorage.getItem("token"),
-          "Accept": "application/json",
+          Accept: "application/json",
           "Content-type": "application/json"
         },
         body: raw,
@@ -115,20 +116,28 @@ export default {
   font-family: "Poppins", sans-serif;
 }
 :root {
-  --color-categoria: #f5f003;
-  --color-categoria-imput: #fa8c3f;
+  --color-categoria: -webkit-linear-gradient(
+    175deg,
+    #00fff5,
+    #bcff00,
+    #ffee00,
+    #ffc100,
+    #ff59c1,
+    #e762ff
+  );
+  --color-categoria-imput: #333;
   --gradiente: linear-gradient(
       to right,
-      hsla(59, 100%, 50%, 0.38),
-      hsla(59, 100%, 50%, 0.95)
+      hsla(0, 0%, 0%, 0.75),
+      hsla(0, 0%, 0%, 0.75)
     ),
-    url(../assets/Imagenes-comida/fondo2.jpg);
+    url(../assets/Imagenes-comida/fondocat2.jpg);
   --webkit-gradient: -webkit-linear-gradient(
       to right,
-      hsla(59, 100%, 50%, 0.38),
-      hsla(59, 100%, 50%, 0.95)
+      hsla(0, 0%, 0%, 0.75),
+      hsla(0, 0%, 0%, 0.75)
     ),
-    url(../assets/Imagenes-comida/fondo2.jpg);
+    url(../assets/Imagenes-comida/fondocat2.jpg);
 }
 /*---------------HEADER---------------*/
 .waveuno {
@@ -155,16 +164,30 @@ nav {
   padding: 30px 50px 0 0;
 }
 nav > a {
-  color: #333;
-  /*font-weight: 300;*/
   font-family: "Pacifico", cursive;
-  font-size: 18px;
+  font-size: 25px;
   text-decoration: none;
   margin-right: 12px;
 }
 nav > a:hover {
   text-decoration: underline;
 }
+nav a:nth-child(1) {
+  color: #00feca;
+}
+nav a:nth-child(2) {
+  color: #bcff00;
+}
+nav a:nth-child(3) {
+  color: #ffc100;
+}
+nav a:nth-child(4) {
+  color: #ffee00;
+}
+nav a:nth-child(5) {
+  color: #ff59c1;
+}
+
 .wave {
   position: absolute;
   bottom: 0;

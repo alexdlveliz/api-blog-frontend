@@ -13,7 +13,26 @@ async function getPostsComida(page) {
     .then((res) => res.posts);
 }
 
+async function publishComment(comment, user_id, post_id) {
+  var raw = `{\n	"content": "${comment}",\n	"user_id": ${user_id},\n	"post_id": ${post_id}\n}`;
+
+  var requestOptions = {
+    method: "POST",
+    headers: {
+      "Accept": "application/json",
+      "Content-type": "application/json"
+    },
+    body: raw,
+    redirect: "follow",
+  };
+  fetch(`${url}/comments`, requestOptions)
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.log("error", error));
+}
+
 export default {
   getPosts,
   getPostsComida,
+  publishComment
 };
