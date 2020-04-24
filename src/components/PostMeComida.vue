@@ -8,10 +8,10 @@
         <router-link to="/general">Posts</router-link>
         <router-link to="/create">Publicar</router-link>
       </nav>
-      <section class="textos-header">
+      <section class="textos-header-cat">
         <h1>{{this.categories[this.idCategory-1].name_category}}</h1>        
       </section>
-      <div class="wave" style="height: 150px; overflow: hidden;">
+      <div class="wave-cat" style="height: 150px; overflow: hidden;">
         <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
           <path
             d="M-5.42,86.94 C279.00,142.20 383.97,-97.59 500.00,49.99 L500.00,150.00 L0.00,150.00 Z"
@@ -21,55 +21,55 @@
       </div>
     </header>
     <div v-for="(item, index) of posts" v-bind:key="index">
-      <div :class="[index%2==0 ? 'container':'container2']">
-        <div class="otro">
+      <div :class="[index%2==0 ? 'container-cat':'container2-cat']">
+        <div class="otro-cat">
           <h1></h1>
         </div>
-        <div class="content" v-if="index%2==0">
-          <div class="bloguer">
-          <div class="contenedor-bloguer">
-            <div class="cards">
-              <div class="card">
-                <div class="imgBox">
+        <div class="content-cat" v-if="index%2==0">
+          <div class="bloguer-cat">
+          <div class="contenedor-bloguer-cat">
+            <div class="cards-cat">
+              <div class="card-cat">
+                <div class="imgBox-cat">
                   <img src="@/assets/Imagenes-comida/face2.jpg" alt />
                 </div>
-                <div class="contenido-texto-card">
+                <div class="contenido-texto-card-cat">
                   <h4>{{item.user.name}}</h4>
                 </div>
               </div>
             </div>
           </div>
         </div>
-          <div class="bannerText">
+          <div class="bannerText-cat">
             <div>
               <h2>{{item.title}}</h2>
               <p>{{item.content}}</p>
               <router-link to="/post"><a @click="setPost(item)">Ver más</a></router-link>
             </div>
           </div>
-          <div class="bannerImg" id="slideshow">
+          <div class="bannerImg-cat">
             <img class="active" src="@/assets/Imagenes-comida/food6.jpg" alt />
           </div>
         </div>
-        <div class="content" v-else>
-          <div class="bannerImg" id="slideshow">
-            <img class="active" src="@/assets/Imagenes-comida/food6.jpg" alt />
+        <div class="content-cat" v-else>
+          <div class="bannerImg-cat">
+            <img src="@/assets/Imagenes-comida/food6.jpg" alt />
           </div>
-          <div class="bannerText">
+          <div class="bannerText-cat">
             <div>
               <h2>{{item.title}}</h2>
               <p>{{item.content}}</p>
               <router-link to="/post"><a>Ver más</a></router-link>
             </div>
           </div>
-          <div class="bloguer">
-          <div class="contenedor-bloguer">
-            <div class="cards">
-              <div class="card">
-                <div class="imgBox">
+          <div class="bloguer-cat">
+          <div class="contenedor-bloguer-cat">
+            <div class="cards-cat">
+              <div class="card-cat">
+                <div class="imgBox-cat">
                   <img src="@/assets/Imagenes-comida/face2.jpg" alt />
                 </div>
-                <div class="contenido-texto-card">
+                <div class="contenido-texto-card-cat">
                   <h4>{{item.user.name}}</h4>
                 </div>
               </div>
@@ -90,7 +90,7 @@
         @click="getPostsCategory(pagination.next_page)"
       >Siguiente</button>
     </div>
-    <section class="portafolio">
+    <section class="portafolio-cat">
       <div style="height: 150px; overflow: hidden;">
         <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
           <path
@@ -99,7 +99,7 @@
           />
         </svg>
       </div>
-      <h2 class="titulob">NT</h2>
+      <h2 class="titulo-cat">NT</h2>
     </section>
   </div>
 </template>
@@ -160,20 +160,18 @@ export default {
     url(../assets/Imagenes-comida/fondo.jpg);
 }
 /*---------------HEADER---------------*/
-.waveuno {
+/* .waveuno {
   position: absolute;
   top: 0;
   width: 100%;
-}
+} */
 
 header {
   width: 100%;
   height: 685px;
   background: var(--color-categoria); /* fallback for old browsers*/
   background: var(--webkit-gradient); /* Chrome 10-25, Safari 5.1-6*/
-  background: var(
-    --gradiente
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: var(--gradiente); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background-size: cover;
   background-attachment: fixed;
   position: relative;
@@ -194,25 +192,25 @@ nav > a{
 nav > a:hover{
     text-decoration: underline;
 }
-.wave{
+.wave-cat{
     position: absolute;
     bottom: 0;
     width: 100%;
 
 }
-header .textos-header{
+header .textos-header-cat{
     display: flex;
     height: 430px;
     width: 100%;align-items: center;
     justify-content: center;
     flex-direction: column;
 }
-.textos-header h1{
+.textos-header-cat h1{
     color: var(--color-nav);
     font-size: 115px;
     font-family: 'Rock Salt', cursive;
 }
-.textos-header h2{
+.textos-header-cat h2{
     color: var(--color-nav);
     font-weight: 200;
     font-size: 45px;
@@ -220,25 +218,25 @@ header .textos-header{
 }
 
 /* CONTENIDO-BLOG */
-.otro{
+.otro-cat{
     padding: 0 100px;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 120px;
 }
-.otro h1{
+.otro-cat h1{
     color: var(--color-categoria);
     text-align: center;
     font-size: 60px;
     letter-spacing: 2px;
 }
-.container{
+.container-cat{
     position: relative;
     padding: 0 100px;
     min-height: 50vh;
 }
-.container:before{
+.container-cat:before{
     content: '';
     position: absolute;
     top: 0;
@@ -251,12 +249,12 @@ header .textos-header{
     z-index: -2;
 }
 
-.container2{
+.container2-cat{
     position: relative;
     padding: 0 100px;
     min-height: 50vh;
 }
-.container2:before{
+.container2-cat:before{
     content: '';
     position: absolute;
     top: 0;
@@ -269,18 +267,18 @@ header .textos-header{
     z-index: -2;
 }
 
-.content{
+.content-cat{
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100%;
 }
-.content .bannerText{
+.content-cat .bannerText-cat{
     position: relative;
     max-width: 800px;
     margin: 15px;
 }
-.content .bannerText h2{
+.content-cat .bannerText-cat h2{
     font-size: 35px;
     text-transform: uppercase;
     font-weight: 800;
@@ -288,14 +286,14 @@ header .textos-header{
     margin: 10px;
     color: #333;
 }
-.content .bannerText p{
+.content-cat .bannerText-cat p{
     font-size: 18px;
     color: #333;
     line-height: 1.8em;
     margin: 0;
     text-align: justify;
 }
-.content .bannerText a{
+.content-cat .bannerText-cat a{
     position: relative;
     display: inline-block;
     text-transform: uppercase;
@@ -309,14 +307,14 @@ header .textos-header{
     background: var(--color-categoria);
     border-radius: 5px;
 }
-.content .bannerImg{
+.content-cat .bannerImg-cat{
     position: relative;
     margin-right: 0px;
     width: 310px;
     height: 310px;
     border-radius: 50%;
 }
-.content .bannerImg img{
+.content-cat .bannerImg-cat img{
     position: absolute;
     top: 0;
     left: 0;
@@ -326,7 +324,7 @@ header .textos-header{
     object-fit: cover;
     opacity: 1;
 }
-.content .bloguer{
+.content-cat .bloguer-cat{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -334,23 +332,23 @@ header .textos-header{
 }
 
 /* Bloguers */
-.container .bloguer, .container2 .bloguer{
+.container-cat .bloguer-cat, .container2-cat .bloguer-cat{
     position: relative;
     margin-top: 50px;
     width: 250px;
     height: 250px;
 }
-.bloguer .contenedor-bloguer{
+.bloguer-cat .contenedor-bloguer-cat{
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
 }
-.bloguer h4{
+.bloguer-cat h4{
     position: relative;
     color: var(--color-categoria);
 }
-.contenedor-bloguer .cards{
+.contenedor-bloguer-cat .cards-cat{
     position: relative;
     margin-top: 0;
     display: flex;
@@ -359,7 +357,7 @@ header .textos-header{
     flex-direction: row-reverse;
     min-height: 10vh;
 }
-.card{
+.card-cat{
    position: relative;
    width: 170px;
    height: 170px;
@@ -370,10 +368,10 @@ header .textos-header{
    background: #ffffff;
    transition: .50s;
 }
-.card:hover{
+.card-cat:hover{
     height: 200px;
 }
-.card .imgBox{
+.card-cat .imgBox-cat{
    position: absolute;
    top: 0;
    left: 0;
@@ -382,15 +380,15 @@ header .textos-header{
    padding: 5px;
    box-sizing: border-box;
 }
-.card .imgBox img{
+.card-cat .imgBox-cat img{
    max-width: 100%;
    opacity: 1;
    transition: 0.5s;
 }
-.card:hover .imgBox img{
+.card-cat:hover .imgBox-cat img{
    opacity: 1;
 }
-.card:before{
+.card-cat:before{
    content: '';
    position: absolute;
    top: -2px;
@@ -400,7 +398,7 @@ header .textos-header{
    background: var(--color-categoria);
    z-index: -1;
 }
-.card:after{
+.card-cat:after{
    content: '';
    position: absolute;
    top: -2px;
@@ -411,10 +409,10 @@ header .textos-header{
    z-index: -2;
    filter: blur(10px);
 }
-.card:before, .card:after{
+.card-cat:before, .card-cat:after{
    background: var(--gradiente);
 }
-.card .contenido-texto-card{
+.card-cat .contenido-texto-card-cat{
    position: absolute;
    bottom: 0;
    left: 10px;
@@ -431,10 +429,10 @@ header .textos-header{
    opacity: 0;
    transition: .5s;
 }
-.card:hover .contenido-texto-card{
+.card-cat:hover .contenido-texto-card-cat{
    opacity: 1;
 }
-.card .contenido-texto-card h4{
+.card-cat .contenido-texto-card-cat h4{
    font-size: 17px;
    color: black;
    font-family: 'Pacifico', cursive;
@@ -442,7 +440,7 @@ header .textos-header{
    letter-spacing: 2px;
 }
 /* Hacer comentarios */
-.cards .comentarios{
+/* .cards-cat .comentarios-cat{
     position: relative;
     width: 600px;
     height: 250px;
@@ -482,9 +480,9 @@ header .textos-header{
     font-size: 12px;
     text-decoration: none;
     padding: 10px;
-}
+} */
 /* ver comentarios */
-.flex{
+/* .flex{
     width: 100%;
     height: 100%;
     display: flex;
@@ -547,7 +545,7 @@ header .textos-header{
 .comentario-cont p{
     text-align: justify;
     letter-spacing: 1px;
-}
+} */
 
 /* Botones de paginacion */
 .paginacion{
@@ -572,7 +570,7 @@ header .textos-header{
 .paginacion button:hover{
   cursor: pointer;
 }
-.portafolio {
+.portafolio-cat {
   margin-top: 45px;
   background: var(--color-categoria); /* fallback for old browsers*/
   background: var(--webkit-gradient); /* Chrome 10-25, Safari 5.1-6*/
@@ -582,7 +580,7 @@ header .textos-header{
   background-size: cover;
   background-attachment: fixed;
 }
-.portafolio h2 {
+.portafolio-cat h2 {
   text-align: center;
   color: white;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
@@ -590,11 +588,11 @@ header .textos-header{
 }
 /* CATEGORIAS */
 /*---------------Galeria-Categorías---------------*/
-.contenedor-categorias {
+/* .contenedor-categorias {
   margin: 0;
   padding: 0;
 }
-.titulob {
+.titulo-cat {
   color: #ffffff;
   font-size: 45px;
   font-family: "Rock Salt", cursive;
@@ -690,5 +688,5 @@ header .textos-header{
   background: #7f00ff;
   text-decoration: none;
   color: #ffffff;
-}
+} */
 </style>

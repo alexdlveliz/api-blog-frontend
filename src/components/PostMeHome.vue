@@ -5,6 +5,7 @@
         <router-link to="/">Inicio</router-link>
         <router-link to="/about">Nosotros</router-link>
         <router-link to="/login">Iniciar Sesión</router-link>
+        <a href="#categorias-div">Categorias</a>
         <router-link to="/general">Posts</router-link>
         <router-link to="/create">Publicar</router-link>
       </nav>
@@ -53,7 +54,7 @@
           </div>
         </div>
       </section>
-      <section class="portafolio">
+      <section class="portafolio" id="categorias-div">
         <div style="height: 150px; overflow: hidden;">
           <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
             <path
@@ -63,7 +64,7 @@
           </svg>
         </div>
         <h2 class="titulob">Categorias</h2>
-        <div class="contenedor-categorias">
+        <div class="contenedor-categorias" >
           <div class="galeria-port">
             <div class="imagen-port" v-for="(item, index) of categories" v-bind:key="index">
               <div class="imgbx">
