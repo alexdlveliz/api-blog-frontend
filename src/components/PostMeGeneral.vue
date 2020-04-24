@@ -10,7 +10,10 @@
       </nav>
       <section class="textos-header-gen">
         <h1>Posts</h1>
-        <h2>En esta seccion encontraras todos nuestros post, si deseas leer sobre algo en específico</h2>
+        <h2>
+          En esta seccion encontraras todos nuestros post, si deseas leer sobre
+          algo en específico
+        </h2>
         <div class="ver-cat">
           <router-link to="/category">
             <a>click aquí para ver por categorias</a>
@@ -18,7 +21,11 @@
         </div>
       </section>
       <div class="wave-gen" style="height: 150px; overflow: hidden;">
-        <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
+        <svg
+          viewBox="0 0 500 150"
+          preserveAspectRatio="none"
+          style="height: 100%; width: 100%;"
+        >
           <path
             d="M-5.42,86.94 C279.00,142.20 383.97,-97.59 500.00,49.99 L500.00,150.00 L0.00,150.00 Z"
             style="stroke: none; fill: rgb(255, 255, 255);"
@@ -27,11 +34,11 @@
       </div>
     </div>
     <div v-for="(item, index) of posts" v-bind:key="index">
-      <div :class="[index%2==0 ? 'container':'container2']">
+      <div :class="[index % 2 == 0 ? 'container' : 'container2']">
         <div class="otro">
           <h1></h1>
         </div>
-        <div class="content" v-if="index%2==0">
+        <div class="content" v-if="index % 2 == 0">
           <div class="bloguer">
             <div class="contenedor-bloguer">
               <div class="cards">
@@ -40,7 +47,7 @@
                     <img src="../assets/Imagenes-comida/face.jpg" alt />
                   </div>
                   <div class="contenido-texto-card">
-                    <h4>{{item.user.name}}</h4>
+                    <h4>{{ item.user.name }}</h4>
                   </div>
                 </div>
               </div>
@@ -48,11 +55,17 @@
           </div>
           <div class="bannerText">
             <div>
-              <h2>{{item.title}}</h2>
-              <p>{{item.content}}</p>
+              <h2>{{ item.title }}</h2>
+              <p>{{ item.content }}</p>
               <div class="btn">
                 <router-link to="/post">
-                  <a target="blank_" alt="Ver más" @click="setPost(item)">Ver más</a>
+                  <a
+                    class="rainbow-button"
+                    target="blank_"
+                    alt="Ver más"
+                    @click="setPost(item)"
+                    >Ver más</a
+                  >
                 </router-link>
               </div>
             </div>
@@ -67,11 +80,13 @@
           </div>
           <div class="bannerText">
             <div>
-              <h2>{{item.title}}</h2>
-              <p>{{item.content}}</p>
+              <h2>{{ item.title }}</h2>
+              <p>{{ item.content }}</p>
               <div class="btn">
                 <router-link to="/post">
-                  <a class="rainbow-button" target="blank_" alt="Ver más">Ver más</a>
+                  <a class="rainbow-button" target="blank_" alt="Ver más"
+                    >Ver más</a
+                  >
                 </router-link>
               </div>
             </div>
@@ -84,7 +99,7 @@
                     <img src="../assets/Imagenes-comida/face1.jpg" alt />
                   </div>
                   <div class="contenido-texto-card">
-                    <h4>{{item.user.name}}</h4>
+                    <h4>{{ item.user.name }}</h4>
                   </div>
                 </div>
               </div>
@@ -95,17 +110,25 @@
     </div>
     <button
       class="botones"
-      :disabled="pagination.prev_page!=null ? false:true"
+      :disabled="pagination.prev_page != null ? false : true"
       @click="getPosts(pagination.prev_page)"
-    >Anterior</button>
+    >
+      Anterior
+    </button>
     <button
       class="botones"
-      :disabled="pagination.next_page!=null ? false:true"
+      :disabled="pagination.next_page != null ? false : true"
       @click="getPosts(pagination.next_page)"
-    >Siguiente</button>
+    >
+      Siguiente
+    </button>
     <section class="portafolio">
       <div style="height: 150px; overflow: hidden;">
-        <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
+        <svg
+          viewBox="0 0 500 150"
+          preserveAspectRatio="none"
+          style="height: 100%; width: 100%;"
+        >
           <path
             d="M0.00,49.99 C128.89,193.51 249.66,-66.01 500.00,49.99 L500.00,0.00 L0.00,0.00 Z"
             style="stroke: none; fill: #ffffff;"
@@ -126,7 +149,7 @@ export default {
   data() {
     return {
       pagination: [],
-      posts: []
+      posts: [],
     };
   },
   methods: {
@@ -136,15 +159,15 @@ export default {
     async getPosts(url) {
       const datos = await fetch(
         `https://software-app-blog.herokuapp.com/${url}`
-      ).then(res => res.json());
+      ).then((res) => res.json());
       this.posts = datos["posts"];
       this.pagination = datos["meta"];
     },
-    ...mapMutations(["setPost"])
+    ...mapMutations(["setPost"]),
   },
   created() {
     this.getPosts("posts");
-  }
+  },
 };
 </script>
 
