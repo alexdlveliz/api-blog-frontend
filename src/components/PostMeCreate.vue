@@ -9,7 +9,11 @@
         <router-link to="/create">Publicar</router-link>
       </nav>
       <div class="wave" style="height: 150px; overflow: hidden;">
-        <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
+        <svg
+          viewBox="0 0 500 150"
+          preserveAspectRatio="none"
+          style="height: 100%; width: 100%;"
+        >
           <path
             d="M-5.42,86.94 C279.00,142.20 383.97,-97.59 500.00,49.99 L500.00,150.00 L0.00,150.00 Z"
             style="stroke: none; fill: rgb(255, 255, 255);"
@@ -17,7 +21,7 @@
         </svg>
       </div>
     </header>
-    <div class="container">
+    <div class="container-create">
       <h1>¡Bienvenido!</h1>
       <p>Compartenos tus ideas y ayuda a otros a ser expertos como tu</p>
       <div class="contenedor-info">
@@ -31,7 +35,9 @@
         <h3>Elige una categoria</h3>
         <select name="categorias" v-model="category">
           <!-- <option value="32">{{categories}}</option> -->
-          <option v-for="cat in categories" :key="cat.id">{{cat.name_category}}</option>
+          <option v-for="cat in categories" :key="cat.id">{{
+            cat.name_category
+          }}</option>
         </select>
         <!-- nombre del cuate -->
         <!-- <a href id="Guardar" @click="postear">Guardar</a> -->
@@ -40,7 +46,11 @@
     </div>
     <section class="portafolio">
       <div style="height: 150px; overflow: hidden;">
-        <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
+        <svg
+          viewBox="0 0 500 150"
+          preserveAspectRatio="none"
+          style="height: 100%; width: 100%;"
+        >
           <path
             d="M0.00,49.99 C128.89,193.51 249.66,-66.01 500.00,49.99 L500.00,0.00 L0.00,0.00 Z"
             style="stroke: none; fill: #ffffff;"
@@ -61,11 +71,11 @@ export default {
     return {
       title: "",
       content: "",
-      category: ""
+      category: "",
     };
   },
   computed: {
-    ...mapState(["categories"])
+    ...mapState(["categories"]),
   },
   methods: {
     postear() {
@@ -91,19 +101,19 @@ export default {
         headers: {
           Authorization: localStorage.getItem("token"),
           Accept: "application/json",
-          "Content-type": "application/json"
+          "Content-type": "application/json",
         },
         body: raw,
-        redirect: "follow"
+        redirect: "follow",
       };
 
       //Petición a la API
       fetch("http://software-app-blog.herokuapp.com/posts", requestOptions)
-        .then(response => console.log(response))
-        .then(result => console.log(result))
-        .catch(error => console.log("error", error));
-    }
-  }
+        .then((response) => console.log(response))
+        .then((result) => console.log(result))
+        .catch((error) => console.log("error", error));
+    },
+  },
 };
 </script>
 
@@ -194,7 +204,7 @@ nav a:nth-child(5) {
   width: 100%;
 }
 
-.container {
+.container-create {
   position: relative;
   padding: 0 100px;
   min-height: 100vh;
