@@ -18,6 +18,10 @@ async function publishComment(comment, user_id, post_id) {
 
   var requestOptions = {
     method: "POST",
+    headers: {
+      "Accept": "application/json",
+      "Content-type": "application/json"
+    },
     body: raw,
     redirect: "follow",
   };

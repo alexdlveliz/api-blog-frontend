@@ -70,6 +70,16 @@
         </div>
       </div>
     </div>
+    <button
+      class="botones"
+      :disabled="pagination.prev_page!=null ? false:true"
+      @click="getPosts(pagination.prev_page)"
+    >Anterior</button>
+    <button
+      class="botones"
+      :disabled="pagination.next_page!=null ? false:true"
+      @click="getPosts(pagination.next_page)"
+    >Siguiente</button>
     <section class="portafolio-post">
       <div style="height: 150px; overflow: hidden;">
         <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">

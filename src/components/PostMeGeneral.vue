@@ -51,7 +51,9 @@
               <h2>{{item.title}}</h2>
               <p>{{item.content}}</p>
               <div class="btn">
-                <a href="#">Ver mas</a>
+                <router-link to="/post">
+                  <a target="blank_" alt="Ver más" @click="setPost(item)">Ver más</a>
+                </router-link>
               </div>
             </div>
           </div>
@@ -68,7 +70,9 @@
               <h2>{{item.title}}</h2>
               <p>{{item.content}}</p>
               <div class="btn">
-                <a href="#">Ver más</a>
+                <router-link to="/post">
+                  <a class="rainbow-button" target="blank_" alt="Ver más">Ver más</a>
+                </router-link>
               </div>
             </div>
           </div>
@@ -115,6 +119,7 @@
 
 <script>
 import api from "@/api";
+import { mapState, mapMutations } from "vuex";
 
 export default {
   name: "PostMeGeneral",
@@ -134,7 +139,8 @@ export default {
       ).then(res => res.json());
       this.posts = datos["posts"];
       this.pagination = datos["meta"];
-    }
+    },
+    ...mapMutations(["setPost"])
   },
   created() {
     this.getPosts("posts");
@@ -246,6 +252,7 @@ export default {
 }
 .textos-header-gen h1 {
   background: var(--colores-gen);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 135px;
@@ -263,6 +270,7 @@ export default {
 }
 .ver-cat a {
   background: var(--colores-gen);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 18px;
@@ -367,6 +375,7 @@ export default {
   text-transform: uppercase;
   font-weight: 700;
   background: var(--colores-gen);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: 1px;
@@ -584,6 +593,7 @@ export default {
 .portafolio h2 {
   text-align: center;
   background: var(--colores-gen);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
